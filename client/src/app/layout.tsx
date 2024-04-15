@@ -1,7 +1,10 @@
+"use client"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
+import { Provider } from 'react-redux'
+import store from "../store"
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
     <html lang="en">
     <body>
       {/* Layout UI */}
-      <main>{children}</main>
+      <main>
+      {/* {children} */}
+      <Provider store={store}>{children} </Provider>
+        </main>
       <h1>
       {/* <a rel="login" href="component/login.tsx" >login</a> */}
       </h1>

@@ -15,5 +15,10 @@ model User {
   gender String
   location String
   phoneNumber Int
-
+  role Role?
+}
+enum Role {
+    Admin
+    User
+    AirlineCompanies 
 }
