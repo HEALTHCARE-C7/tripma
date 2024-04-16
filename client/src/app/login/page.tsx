@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 // import  '../CSS/Auth.css'
 import { useDispatch,useSelector } from 'react-redux'
-import  {Login}  from '../../component/authentication/authAction'
+import  {Login}  from '../../Action/authAction'
 import { useState } from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";

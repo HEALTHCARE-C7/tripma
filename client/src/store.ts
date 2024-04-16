@@ -3,7 +3,7 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Import Reducers
-import authReducer from '../reduce/authReduceLogin'
+import authReducer from './reduce/authReduceLogin'
 
 const store = configureStore({
 	reducer: {
