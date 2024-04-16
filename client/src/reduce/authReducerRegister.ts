@@ -1,17 +1,8 @@
-
+import { Register } from "@/Action/authAction";
+import {authState} from '../types/Types';
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { createAsyncThunk } from '@reduxjs/toolkit'
-// import {  PayloadAction } from '@reduxjs/toolkit';
-import { Dispatch } from 'redux';
 
-import axios from 'axios'
-import { authState,Message } from '@/types/Types';
-import { Login} from '@/Action/authAction'
-
-// 
-
-const initialState :authState ={
+const initialState :authState={
     
     loading: false,
     userInfo: null, 
@@ -27,16 +18,16 @@ const initialState :authState ={
      
      reducers:  {},
      extraReducers: (builder) => {
-        builder.addCase(Login.pending, (state,action) => {
+        builder.addCase(Register.pending, (state) => {
           state.loading = true;
          
         });
-        builder.addCase(Login.fulfilled, (state, action) => {
+        builder.addCase(Register.fulfilled, (state, action) => {
           state.loading = false;
-          state.userInfo = action.payload;
+          state.userInfo = action.payload|| null;
           state.success=true
         });
-        builder.addCase(Login.rejected, (state, action) => {
+        builder.addCase(Register.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message || 'An error occurred.';
         });

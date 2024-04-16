@@ -1,6 +1,8 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import {Button} from "@nextui-org/button";
+
 // import  '../CSS/Auth.css'
 import { useDispatch,useSelector } from 'react-redux'
 import  {Login}  from '../../Action/authAction'
@@ -11,14 +13,14 @@ import {useAppDispatch,useAppSelector} from "../../store"
 const LoginScreen = () => {
   const router = useRouter()
 //   const navigate = useNavigate();
- const user=useAppSelector(state=>state.auth.userInfo)
+ const user=useAppSelector(state=>state.login.userInfo)
  console.log('hello',user);
  
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch()
   const { register, handleSubmit } = useForm()
   const success= useAppSelector(state=>
-    state.auth.success
+    state.login.success
   )
   console.log('succes',success);
  
@@ -76,6 +78,7 @@ const togglePasswordVisibility = () => {
             <button type="submit" className="button-login"  >Log In</button>
           </form>
         </div>
+        <Button>Press me</Button>
       </div>
     // </div>
     // </div>

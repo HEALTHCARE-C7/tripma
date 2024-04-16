@@ -1,5 +1,9 @@
 'use client'
 import React, { useState, FormEvent } from 'react';
+import {useAppDispatch,useAppSelector} from "../../store"
+import { useForm } from 'react-hook-form'
+import { Register } from '@/Action/authAction';
+
 interface RegisterFormData {
   firstName: string;
   lastName: string;
@@ -14,97 +18,78 @@ interface RegisterFormData {
 }
 
 const RegisterForm: React.FC = () => {
-  const [formData, setFormData] = useState<RegisterFormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    age: 0,
-    gender: '',
-    location: '',
-    phoneNumber: 0,
-    role: '',
-  });
+  const dispatch = useAppDispatch()
+  const { register, handleSubmit } = useForm()
+  const success= useAppSelector(state=>
+    state.register.success
+  )
+ 
+  const submitForm = () => {
+    dispatch(Register()) 
+    console.log("succc",success); 
+    if(success){
+      // navigate('/Profile/doc')
+      // changeView('login')
+    }else{
+  
+      console.log('error');
+  }
+  }
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    // Here you can submit the form data to your backend API
-    console.log(formData); // For testing
-    // Example of submitting data to an API endpoint using fetch
-    const response = await fetch('http://localhost:3000/api/user/register', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await response.json();
-    console.log(data);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(submitForm)}>
       <input
         type="text"
         placeholder="firstName"
-        name="firstName"
-        value={formData.firstName}
-        onChange={handleChange}
+       
+        {...register('firstName')}
+        required
       />
        <input
         type="text"
         placeholder="lastName"
-        name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
+        
+        {...register('lastName')}
+        required
       />
       <input
         type="email"
         placeholder="Email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
+        {...register('Email')}
+        required
       />
       <input
         type="password"
         placeholder="Password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
+        {...register('Password')}
+        required
       />
         <input
         type="number"
         placeholder="age"
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
+        {...register('age')}
+        required
       />
         <input
         type="text"
         placeholder="location"
-        name="location"
-        value={formData.location}
-        onChange={handleChange}
+        {...register('location')}
+        required
       />
         <input
         type="number"
         placeholder="phoneNumber"
-        name="phoneNumber"
-        value={formData.phoneNumber}
-        onChange={handleChange}
+        {...register('phoneNumber')}
+        required
       />
         <input
         type="text"
         placeholder="role"
-        name="role"
-        value={formData.role}
-        onChange={handleChange}
+        {...register('role')}
+        required
       />
-      <button type="submit">Register</button>
+      <button type="submit">SignUp</button>
     </form>
   );
 };

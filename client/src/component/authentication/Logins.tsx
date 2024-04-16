@@ -9,14 +9,14 @@ import { FaEye,FaEyeSlash  } from "react-icons/fa";
 import {useAppDispatch,useAppSelector} from "../../store"
 const LoginScreen = () => {
 //   const navigate = useNavigate();
- const user=useAppSelector(state=>state.auth.userInfo)
+ const user=useAppSelector(state=>state.login.userInfo)
  console.log(user);
  
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch()
   const { register, handleSubmit } = useForm()
   const success= useAppSelector(state=>
-    state.auth.success
+    state.login.success
   )
   console.log('succes',success);
  
