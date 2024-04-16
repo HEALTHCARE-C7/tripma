@@ -14,13 +14,13 @@ getAll:async function(req,res){
 },
 
 // Get review by ID
-getOnebycompanyName:async function(req,res){
+getReviewById : async function(req,res){
   try {
-      const voyages= await Review.findMany({ where: { id:Number(req.params.id)} })
-      res.status(200).send(voyages)
+      const reviews= await Review.findMany({ where: { id:Number(req.params.id)} })
+      res.status(200).send(reviews)
   } catch (error) {
       throw error
-  } 
+  }
 },
 
 
@@ -34,6 +34,18 @@ getOnebycompanyName:async function(req,res){
         throw error
     }
 },
- 
+ deleteReview : async (req, res) => {
+    const { id } = req.params;
+    try {
+      const deletedReview = await prisma.delete({
+        where: {
+          id: parseInt(id),
+        },
+      });
+      res.json({ message: 'Review deleted successfully', data: deletedReview });
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
 
 }

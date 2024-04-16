@@ -8,7 +8,7 @@ const review = require('../controller/review');
 router.get('/',review.getAll)
 
 // Route to get review by ID
-router.get('/:id', review.getOnebycompanyName)
+router.get('/:id', review.getReviewById)
 
 // Route to create a new review
 router.post('/', review.createReview)
