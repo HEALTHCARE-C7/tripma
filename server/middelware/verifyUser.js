@@ -15,7 +15,7 @@ const verifyUser=(req,res,next)=>{
         }
       } catch {
         res.status(401).json({
-          error: new Error('Invalid request!')
+          message:'Invalid request!'
         });
       }
 }
