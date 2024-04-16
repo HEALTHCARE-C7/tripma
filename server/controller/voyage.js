@@ -46,11 +46,11 @@ module.exports = {
         }
     },
    
-    delete:async function(req,res){
+    deleteVoyage:async function(req,res){
         try {
             const voyages = await voyage.delete({
                 where: {
-                    id: req.params.id
+                    id: Number(req.params.id)
                 }
             });
             res.status(200).send(voyages)    
