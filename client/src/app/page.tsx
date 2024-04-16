@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Login from "../component/authentication/Logins";
 import SignUp from "../component/authentication/SignUp"
-import NaveBarre from "../component/authentication/NaveBarre";
-import Slide from "../component/authentication/Slide";
+import NaveBarre from "../component/NaveBarre";
+import Slide from "../component/Slide";
+import Flight from "../component/Flight";
+import PlacesToStay from "../component/PlacesToStay";
+
+
+
 
 export default function Home() {
   return (
@@ -15,6 +20,8 @@ export default function Home() {
       </div> */}
       <NaveBarre/>
       <Slide/>
+      <Flight/>
+      <PlacesToStay />
     
 
     </main>
