@@ -15,19 +15,10 @@ export interface Message {
   }
   export interface ReservationState {
     loading: boolean,
-    error: string ;
+    error: string |null ;
     success: boolean
-    flight : Reservation|null
+    flight : Reservation []
 
-    
-}
-
-  export interface Error {
-    message: string;  //
-    
-}
-export interface User {
-    FirstName: string;  
     
 }
 export interface Reservation {
@@ -37,6 +28,29 @@ export interface Reservation {
   price :Number 
   departure :String
   destination :String
-  arrival : String
+  arrival : Date
   
+}
+export interface destinationState {
+  loading: boolean,
+  error: string |null ;
+  success: boolean
+  destination : Destin []
+  
+  
+}
+export interface Destin {
+  Name   : String
+  imgUrl :String
+  description :   String 
+  
+}
+
+  export interface Error {
+    message: string;  //
+    
+}
+export interface User {
+    FirstName: string;  
+    
 }

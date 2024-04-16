@@ -22,7 +22,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: rgb(192, 179, 245) !important; 
+ 
 }
 
 @layer utilities {
@@ -33,4 +33,5 @@ body {
   background-color:#605DEC;
   border-radius: 5px;
   color: rgb(255, 255, 255);
+}
 }
