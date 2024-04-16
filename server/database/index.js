@@ -1,15 +1,15 @@
 const {PrismaClient}=require('@prisma/client')
-console.log({
-    first:"npm init",
-    second:"npm install @prisma/client",
-    third:"npm install prisma",
-    fourth:"npx prisma init",
-    fifth:"npx prisma migrate dev",
-    sixth:"npx prisma migrate dev --name create-User-table",
-    seventh:"npx prisma migrate dev",
-    eighth:"npx prisma generate",
+// console.log({
+//     first:"npm init",
+//     second:"npm install @prisma/client",
+//     third:"npm install prisma",
+//     fourth:"npx prisma init",
+//     fifth:"npx prisma migrate dev",
+//     sixth:"npx prisma migrate dev --name create-User-table",
+//     seventh:"npx prisma migrate dev",
+//     eighth:"npx prisma generate",
     
-});
+// });
 
 const prisma = new PrismaClient() 
 async function main() {
