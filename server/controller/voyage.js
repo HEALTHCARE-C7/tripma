@@ -39,7 +39,7 @@ module.exports = {
     },
     getOnebydeparture:async function(req,res){
         try {
-            const voyages= await voyage.findMany({ where: { departure:req.params.departure} })
+            const voyages= await voyage.findMany({ where: { id:req.params.id} })
             res.status(200).send(voyages)    
         } catch (error) {
             throw error    
