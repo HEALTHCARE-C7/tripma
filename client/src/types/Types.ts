@@ -54,3 +54,13 @@ export interface User {
     FirstName: string;  
     
 }
+
+export interface Review {
+  firstName  : String
+  country    : String
+  date       : String
+  ratings    : Number 
+  comments   : String  
+  
+}
+
