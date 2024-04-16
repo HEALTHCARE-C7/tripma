@@ -6,8 +6,8 @@ router.get("/",voyage.getAll)
 router.post("/",voyage.addOne)
 router.get('/:companyName',voyage.getOnebycompanyName)
 router.get('/:destination',voyage.getOnebydestination)
-router.get('/:id',voyage.getOnebydeparture)
+router.get('/:departure',voyage.getOnebydeparture)
 router.delete('/:id',voyage.delete )
 router.patch('/:id',voyage.update)
-
+ 
 module.exports = router;
