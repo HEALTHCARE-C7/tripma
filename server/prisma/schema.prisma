@@ -17,3 +17,14 @@ model User {
   phoneNumber Int
 
 }
+
+
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  country     String
+  date        String
+  ratings     String   
+  comments    String
+}
