@@ -15,6 +15,40 @@ model User {
   gender String
   location String
   phoneNumber Int
+   role Role?
+
+
+}
+enum Role {
+    Admin
+    User
+    AirlineCompanies 
+
+}
+model voyage {
+  id      Int      @id @default(autoincrement())
+  companyName    String
+  imgUrl String
+  description   String  
+  price Int 
+  departure String
+  destination String
+  arrival String
+
+
+}
+model destination {
+  id      Int      @id @default(autoincrement())
+  Name    String
+  imgUrl String
+  description   String  
+
+
+
+
+ 
+}
+
 
 }
 
@@ -28,3 +62,4 @@ model Review {
   ratings     String   
   comments    String
 }
+
