@@ -12,7 +12,7 @@ const LoginScreen = () => {
   const router = useRouter()
 //   const navigate = useNavigate();
  const user=useAppSelector(state=>state.auth.userInfo)
- console.log(user);
+ console.log('hello',user);
  
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch()
