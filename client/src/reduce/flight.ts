@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ReservationState, Reservation } from '@/types/Types'; // Ensure correct import path
-import { getAllVoyages, addVoyage } from '../Action/flightaction';
+import { getAllVoyages,getOnebycompanyName,getOnebydeparture,getOnebydestination, addVoyage,deleteVoyage , update} from '../Action/flightaction';
 
 const initialState: ReservationState = {
   loading: false,
@@ -46,21 +46,81 @@ const authSlice = createSlice({
       })
 
 
+      .addCase(getOnebydeparture.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getOnebydeparture.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(getOnebydeparture.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
 
-    //   .addCase(deleteVoyage.pending, (state, action) => {
-    //     state.loading = true;
-    //     state.error = null;
-    //   })
-    //   .addCase(deleteVoyage.fulfilled, (state, action) => {
-    //     state.loading = false;
-    //     state.flight = state.flight.filter(voyage => voyage.id !== action.payload);
-    //     state.success = true;
-    //   })
-    //   .addCase(deleteVoyage.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.error.message || 'An error occurred.';
-    //   });
 
+      .addCase(getOnebydestination.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getOnebydestination.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(getOnebydestination.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
+
+
+      .addCase(getOnebycompanyName.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getOnebycompanyName.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(getOnebycompanyName.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
+
+
+      .addCase(deleteVoyage.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteVoyage.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = state.flight;
+        state.success = true;
+      })
+      .addCase(deleteVoyage.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
+
+      .addCase(update.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(update.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = state.flight;
+        state.success = true;
+      })
+      .addCase(update.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      });
 
       
   },

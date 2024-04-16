@@ -31,9 +31,9 @@ model voyage {
   imgUrl String
   description   String  
   price Int 
-  departure String
+  departure DateTime
   destination String
-  arrival String
+  arrival DateTime
 
 
 }
