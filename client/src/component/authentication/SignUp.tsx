@@ -41,7 +41,6 @@ const RegisterForm: React.FC = () => {
     const data = await response.json();
     console.log(data);
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

@@ -43,7 +43,8 @@ export default function PlacesToStay() {
           </div>
           <div className="col-4">
               <div className="card" >
-                <img   alt="" style={{}}/>
+                      
+              
                 <Image src="/place3.jpeg" 
                 className='image-flight'
                   width={300}

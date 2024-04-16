@@ -5,6 +5,8 @@ import NaveBarre from "../component/NaveBarre";
 import Slide from "../component/Slide";
 import Flight from "../component/Flight";
 import PlacesToStay from "../component/PlacesToStay";
+import Reviews from "../component/Reviews";
+
 
 
 
@@ -22,6 +24,7 @@ export default function Home() {
       <Slide/>
       <Flight/>
       <PlacesToStay />
+      <Reviews />
     
 
     </main>
