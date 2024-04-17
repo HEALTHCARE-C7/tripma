@@ -12,18 +12,23 @@ model User {
   email   String   @unique
   password    String  
   age Int 
-  gender String
+  gender Gender?
   location String
   phoneNumber Int
    role Role?
 
 
 }
-enum Role {
-    Admin
-    User
-    AirlineCompanies 
 
+enum Role {
+    admin
+    user
+    airlineCompanies 
+
+}
+enum Gender {
+  male
+  female
 }
 model voyage {
   id      Int      @id @default(autoincrement())

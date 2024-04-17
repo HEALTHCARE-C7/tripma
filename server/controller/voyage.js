@@ -120,9 +120,13 @@ module.exports = {
     getByAll:async function(req,res){
         try {
             const voyages= await voyage.findMany({
-                 where: { departure:req.params.departure,
-                    destination:req.params.destination,
+                where: { 
+                departureplace: req.params.departureplace,
+                destination:req.params.destination,
+                departure:req.params.departure,
+                // decrementSeat:req.params.decrementSeat
                     
+
                 
                 } })
             res.status(200).send(voyages)    
