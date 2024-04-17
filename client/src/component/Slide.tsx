@@ -12,7 +12,7 @@ export default function Slide() {
             <div className="carousel-item active carousel-slide-home">
                 <div className="container">
                     <div className="row" style={{justifyContent:"center",paddingTop:"5rem",paddingBottom:"2rem"}}>
-                            <div className="col-6 text-slide "> It's more than just a trip</div>
+                            <div className="col-6 text-slide "> It&apos;s more than just a trip</div>
                     </div>
                     <div className="row" barre-search style={{paddingTop:"0rem",backgroundColor:"white"}}>
                         

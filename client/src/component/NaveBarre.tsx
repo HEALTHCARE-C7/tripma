@@ -1,6 +1,6 @@
 import React from 'react'
 import '../CSS/NaveBarre.css'; 
-
+import  Link  from "next/link";
 export default function NaveBarre() {
   return (
     <div>
@@ -15,8 +15,8 @@ export default function NaveBarre() {
                 <a className="nav-link active" aria-current="page" href="/Flights"style={{color:"#605DEC"}}>Flights</a>
                 <a className="nav-link active" aria-current="page" style={{color:"#7C8DB0"}} href="#">Hotels</a>
                 <a className="nav-link" href="#" style={{color:"#7C8DB0"}}>Packages</a>
-                <Link className="nav-link" href="/Login"style={{color:"#7C8DB0"}} >Sign in</Link>
-                <button className='btn-blue'> <Link className="nav-link"  style={{color:"white"}} href="signup"  aria-disabled="true">Sign up </Link></button>
+                <Link href="/Login" className="nav-link"  style={{color:"#7C8DB0"}} >Sign in</Link>
+                <button className='btn-blue'> <Link href='/signup' className="nav-link"  style={{color:"white"}}   aria-disabled="true">Sign up </Link></button>
             </div>
             </div>
         </div>
