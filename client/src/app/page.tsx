@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Login from "../component/authentication/Logins";
 import SignUp from "../component/authentication/SignUp"
-import NaveBarre from "../component/authentication/NaveBarre";
-import Slide from "../component/authentication/Slide";
+import HomePage from "./HomePage";
+
+
+
+
 
 export default function Home() {
   return (
@@ -13,8 +16,9 @@ export default function Home() {
        <h1>SIGNUP</h1>
        <SignUp />
       </div> */}
-      <NaveBarre/>
-      <Slide/>
+      <HomePage/>
+
+     
     
 
     </main>
