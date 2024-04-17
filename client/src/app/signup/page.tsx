@@ -19,10 +19,12 @@ const resolver: Resolver<User> = async (values) => {
       : {},
   }
 }
+
 const RegisterForm: React.FC = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const { register, handleSubmit } =useForm<User>({ resolver })
+  // const {view,setView}=useState(false)
   const success= useAppSelector(state=>
     state.register.success
   )
