@@ -11,9 +11,9 @@ router.get('/departure/:departure',voyage.getOnebydeparture)
 router.get('/departureplace/:departureplace',voyage.getOnebydepartureplace)
 
 // router.get('/getFlight/:flight',voyage.getFlight)
-router.get('/decrementSeat/:id',voyage.decrementSeat)
+router.patch('/decrementSeat/:id',voyage.decrementSeat)
 
-router.get('/avilaible',voyage.avilaible)
+// router.get('/avilaible',voyage.avilaible)
 router.delete('/:id',voyage.deleteVoyage )
 router.patch('/:id',voyage.update)
  

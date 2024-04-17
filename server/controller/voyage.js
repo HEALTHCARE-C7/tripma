@@ -39,7 +39,7 @@ module.exports = {
                 data: { seats: flight[0].seats - 1 }
             });
     
-            return updatedFlight;
+            res.status(201).send(updatedFlight)
         } catch (error) {
             throw error;
         }
@@ -117,19 +117,32 @@ module.exports = {
             throw error;
         }
     },
-    avilaible: async function(req, res) {
-        let available = false;
-        if (req.body.State=== "false") {
-            available = true ;
-        }
-    
+    getByAll:async function(req,res){
         try {
-            const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
-            res.status(200).send(true);
+            const voyages= await voyage.findMany({
+                 where: { departure:req.params.departure,
+                    destination:req.params.destination,
+                    
+                
+                } })
+            res.status(200).send(voyages)    
         } catch (error) {
-            throw error;
-        }
-    }
+            throw error    
+        } 
+    },
+    // avilaible: async function(req, res) {
+    //     let available = false;
+    //     if (req.body.State=== "false") {
+    //         available = true ;
+    //     }
+    
+    //     try {
+    //         const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
+    //         res.status(200).send(true);
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
     
 
   
