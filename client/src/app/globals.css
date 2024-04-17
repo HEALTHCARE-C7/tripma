@@ -2,18 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
-
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  font-variation-settings: "FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24
 }
+
+
 
 .btn-blue{
   background-color:#605DEC;
   border-radius: 5px;
   color: rgb(255, 255, 255);
+}
+svg{
+  width: 2rem;
+  height: 2rem;
+}
+.image-flight {
+  width:100%;
+  height: 20rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size:x-large;
+  font-weight:500;
 }

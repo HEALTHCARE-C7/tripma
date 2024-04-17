@@ -1,20 +1,24 @@
-"use client"
+import Image from "next/image";
+import Login from "../component/authentication/Logins";
+import SignUp from "../component/authentication/SignUp"
+import HomePage from "./HomePage";
 
 
 
-import React from "react";
-import NaveBarre from "../component/NaveBarre";
-import Slide from "../component/Slide"
 
 
 export default function Home() {
   return (
     <main className="">
-    
-    
-  
-      <NaveBarre/>
-      {/* <Slide/> */}
+      {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+        <h1>LOGIN</h1>
+       <Login/>
+       <h1>SIGNUP</h1>
+       <SignUp />
+      </div> */}
+      <HomePage/>
+
+     
     
 
     </main>

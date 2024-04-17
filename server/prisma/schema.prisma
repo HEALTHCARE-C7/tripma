@@ -35,9 +35,14 @@ model voyage {
   imgUrl String
   description   String  
   price Int 
-  departure String
+  departure DateTime
+  departureplace String
   destination String
-  arrival String
+  arrival DateTime  
+  available Boolean   @default(true)
+  seats   Int     @default(10)
+  
+ 
 
 
 }
@@ -45,18 +50,8 @@ model destination {
   id      Int      @id @default(autoincrement())
   Name    String
   imgUrl String
-  description   String  
-
-
-
-
- 
-}
-
-
-
-
-
+  description   String 
+  }
 
 model Review {
   id          Int      @id @default(autoincrement())

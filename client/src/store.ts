@@ -9,6 +9,8 @@ const store = configureStore({
 	reducer: {
 		login: authReducer,
 		register: authReducerRegister,
+		auth: authReducer,
+		
 	},
 });
 

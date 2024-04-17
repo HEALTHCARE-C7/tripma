@@ -9,9 +9,42 @@ export interface Message {
       userToken: string
       error: string ;
       success: boolean
+      
 
       
   }
+  export interface ReservationState {
+    loading: boolean,
+    error: string |null ;
+    success: boolean
+    flight : Reservation []
+
+    
+}
+export interface Reservation {
+  companyName  :  String
+  imgUrl :String
+  description :  String  
+  price :Number 
+  departure :String
+  destination :String
+  arrival : Date
+  
+}
+export interface destinationState {
+  loading: boolean,
+  error: string |null ;
+  success: boolean
+  destination : Destin []
+  
+  
+}
+export interface Destin {
+  Name   : String
+  imgUrl :String
+  description :   String 
+  
+}
 
 
   export interface Error {
@@ -31,3 +64,13 @@ export interface User  {
     
     
 }
+
+export interface Review {
+  firstName  : String
+  country    : String
+  date       : String
+  ratings    : Number 
+  comments   : String  
+  
+}
+

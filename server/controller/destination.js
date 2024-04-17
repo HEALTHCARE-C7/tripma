@@ -20,5 +20,14 @@ module.exports = {
             throw error     
         }
     },
+    added : async (req, res) => {
+        try {
+            const  {Name,imgUrl,description}=req.body
+            const voyages = await destination.create({data:{Name,imgUrl,description}})
+            res.status(201).send(voyages)
+        } catch (error) {
+            throw error
+        }
+    },
 
 }

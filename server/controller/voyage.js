@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
 
+
+  
+
     getAll:async function(req,res){
         try {
             const voyages = await voyage.findMany({})
@@ -12,10 +15,42 @@ module.exports = {
             throw error
         }
     },
+    getFlight:async function(req,res){
+        try {
+            const voyages = await voyage.findMany({where: {seats:seats > 0} })
+            res.status(200).send(voyages)
+        } catch (error) {
+            throw error
+        }
+    },
+    decrementSeat:async function (req,res) {
+        try {
+            // Find the flight by its ID
+            const flight = await voyage.findMany({ where: { id: Number(req.params.id ) } });
+    console.log(flight[0]);
+            // Check if the flight exists
+            if (flight[0].seats===0) {
+                throw new Error("no seats");
+            }
+    
+            // Decrement the number of available seats by 1
+            const updatedFlight = await voyage.update({
+                where: { id: Number(req.params.id )},
+                data: { seats: flight[0].seats - 1 }
+            });
+            res.status(201).send(updatedFlight)
+    
+            ;
+        } catch (error) {
+            throw error;
+        }
+    },
+    
+  
     addOne : async (req, res) => {
         try {
-            const  {companyName,imgUrl,description,price,destination,arrival,departure}=req.body
-            const voyages = await voyage.create({data:{companyName,imgUrl,description,price,destination,arrival,departure}})
+            const  {companyName,imgUrl,description,price,destination,departureplace,arrival,departure}=req.body
+            const voyages = await voyage.create({data:{companyName,imgUrl,description,departureplace,price,destination,arrival,departure}})
             res.status(201).send(voyages)
         } catch (error) {
             throw error
@@ -24,6 +59,14 @@ module.exports = {
     getOnebycompanyName:async function(req,res){
         try {
             const voyages= await voyage.findMany({ where: { companyName:req.params.companyName} })
+            res.status(200).send(voyages)    
+        } catch (error) {
+            throw error    
+        } 
+    },
+    getOnebydepartureplace:async function(req,res){
+        try {
+            const voyages= await voyage.findMany({ where: { departureplace:req.params.departureplace} })
             res.status(200).send(voyages)    
         } catch (error) {
             throw error    
@@ -39,18 +82,20 @@ module.exports = {
     },
     getOnebydeparture:async function(req,res){
         try {
-            const voyages= await voyage.findMany({ where: { departure:req.params.departure} })
+            const voyages= await voyage.findMany({ where: { departure:req.params.departure,
+            } })
             res.status(200).send(voyages)    
         } catch (error) {
             throw error    
         }
     },
    
-    delete:async function(req,res){
+   
+    deleteVoyage:async function(req,res){
         try {
             const voyages = await voyage.delete({
                 where: {
-                    id: req.params.id
+                    id: Number(req.params.id)
                 }
             });
             res.status(200).send(voyages)    
@@ -73,7 +118,21 @@ module.exports = {
           
             throw error;
         }
+    },
+    avilaible: async function(req, res) {
+        let available = false;
+        if (req.body.State=== "false") {
+            available = true ;
+        }
+    
+        try {
+            const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
+            res.status(200).send(true);
+        } catch (error) {
+            throw error;
+        }
     }
+    
 
   
 
