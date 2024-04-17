@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import NaveBarre from "../component/NaveBarre";
-import Slide from "../component/Slide";
 import HomePage from "./HomePage";
 
 

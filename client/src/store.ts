@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
+import authReducer from './reduce/authReduceLogin'
+import authReducerRegister from './reduce/authReducerRegister'
 
-// Import Reducers
-// import authReducer from './reduce/authReduceLogin'
 
 const store = configureStore({
 	reducer: {
-		// auth: authReducer,
+		login: authReducer,
+		register: authReducerRegister,
+		auth: authReducer,
 		
 	},
 });

@@ -14,7 +14,8 @@ export default function page() {
   return (
     <>
     <div className="container-fluid" style={{padding:"4rem"}}>
-        <div className="col-8" >
+      <div className="row">
+      <div className="col-8" >
         <div className="row" barre-search style={{paddingTop:"0rem",backgroundColor:"white"}}>
                         
                         <div className="col-3 col-search">
@@ -575,7 +576,69 @@ export default function page() {
       </div>
 
         </div>
-        <div className="col4"></div>
+        <div className="col-4" style={{paddingTop:"11rem"}}>
+         <div className="row" style={{paddingBottom:"5rem"}}>
+         <table className="table caption-top" >
+    <caption>Price grid (flexible dates)</caption>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">2/12</th>
+        <th scope="col">2/13</th>
+        <th scope="col">2/15</th>
+        <th scope="col">2/16</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">3/7</th>
+        <td>$837</td>
+        <td>$592</td>
+        <td>$837</td>
+        <td>$1308</td>
+
+      </tr>
+      <tr>
+        <th scope="row">3/8</th>
+        <td>$837</td>
+        <td>$592</td>
+        <td>$837</td>
+        <td>$1308</td>
+      </tr>
+      <tr>
+        <th scope="row">3/9</th>
+        <td>$837</td>
+        <td>$592</td>
+        <td>$837</td>
+        <td>$1308</td>
+      </tr>
+      <tr>
+        <th scope="row">3/10</th>
+        <td>$837</td>
+        <td>$592</td>
+        <td>$837</td>
+        <td>$1308</td>
+      </tr>
+      <tr>
+        <th scope="row">3/11</th>
+        <td>$837</td>
+        <td>$592</td>
+        <td>$837</td>
+        <td>$1308</td>
+      </tr>
+    </tbody>
+          </table>
+         </div>
+          <div className="card">
+              <div className="card-body">
+                <h6 className="card-title">Price rating <button className='btn btn-success'>Buy soon</button></h6>
+                <p className="card-text">We recommend booking soon. The average cost of this flight is $750, but could rise 18% to $885 in two weeks.</p>
+               
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
      
     <div className="container">

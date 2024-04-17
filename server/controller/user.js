@@ -9,7 +9,6 @@ module.exports = {
         const saltRounds = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, saltRounds);
         const newUser=await user.create({data:{firstName,lastName,email,password:passwordHash,location,gender,age:parseInt(age),phoneNumber:parseInt(phoneNumber),role}})
-        
         res.status(200).send(newUser)   
      } catch (error) {  
         throw error
@@ -32,11 +31,10 @@ module.exports = {
      delete userData.password;
      res.status(200).json({ token, user: userData });
     },
+
+    
     getOne:async function(req,res){
         try {
-
-          
-
             const user= await user.findOne({ where: { id:req.user.userId } })
 
             res.status(200).send(user)    

@@ -46,22 +46,23 @@ export interface Destin {
   
 }
 
+
   export interface Error {
     message: string;  //
     
 }
 export interface User  {
-  firstName: string;
-  lastName:string;
-  email:string;
-  password:string;
-  location:string;
-  phoneNumber:number;
-  gender:string;
-  role:string;
-  age:number;
-
-
+    firstName: string;  
+    lastName:string;
+    email:string;
+    password:string;
+    location:string;
+    phoneNumber:number;
+    gender:string;
+    role:string;
+    age:number;
+    
+    
 }
 
 export interface Review {
