@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Login from "../component/authentication/Logins";
 import SignUp from "../component/authentication/SignUp"
-import NaveBarre from "../component/authentication/NaveBarre";
-import Slide from "../component/authentication/Slide";
+import NaveBarre from "../component/NaveBarre";
+import Slide from "../component/Slide";
 
 export default function Home() {
   return (
