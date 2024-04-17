@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
 
+
+  
+
     getAll:async function(req,res){
         try {
             const voyages = await voyage.findMany({})
@@ -12,10 +15,27 @@ module.exports = {
             throw error
         }
     },
+    // getFlight:async function(req,res){
+    //     try {
+    //         const voyages = await voyage.findMany({where: {seats:seats > 0} })
+    //         res.status(200).send(voyages)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // },
+    // decrimentSeat:async function(req,res){
+    //     try {
+    //         const voyages = await voyage.update({where: {seats:seats > 0} })
+    //         res.status(200).send(voyages)
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // },
+  
     addOne : async (req, res) => {
         try {
-            const  {companyName,imgUrl,description,price,destination,arrival,departure}=req.body
-            const voyages = await voyage.create({data:{companyName,imgUrl,description,price,destination,arrival,departure}})
+            const  {companyName,imgUrl,description,price,destination,departureplace,arrival,departure}=req.body
+            const voyages = await voyage.create({data:{companyName,imgUrl,description,departureplace,price,destination,arrival,departure}})
             res.status(201).send(voyages)
         } catch (error) {
             throw error
@@ -24,6 +44,14 @@ module.exports = {
     getOnebycompanyName:async function(req,res){
         try {
             const voyages= await voyage.findMany({ where: { companyName:req.params.companyName} })
+            res.status(200).send(voyages)    
+        } catch (error) {
+            throw error    
+        } 
+    },
+    getOnebydepartureplace:async function(req,res){
+        try {
+            const voyages= await voyage.findMany({ where: { departureplace:req.params.departureplace} })
             res.status(200).send(voyages)    
         } catch (error) {
             throw error    
@@ -45,6 +73,7 @@ module.exports = {
             throw error    
         }
     },
+   
    
     deleteVoyage:async function(req,res){
         try {
@@ -73,7 +102,21 @@ module.exports = {
           
             throw error;
         }
+    },
+    avilaible: async function(req, res) {
+        let available = false;
+        if (req.body.State=== "false") {
+            available = true ;
+        }
+    
+        try {
+            const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
+            res.status(200).send(true);
+        } catch (error) {
+            throw error;
+        }
     }
+    
 
   
 

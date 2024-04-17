@@ -7,7 +7,7 @@ const userRouter=require("./routes/User.routes.js")
 const reviewRouter=require("./routes/Review.routes.js")
 
 const voyageRouter=require('./routes/Voyage.router.js')
-const destination = require ('./routes/destination.js')
+const destination = require ('./routes/destination.routes.js')
 
 
 
