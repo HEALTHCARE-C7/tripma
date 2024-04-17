@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import "./globals.css";
 import Link from 'next/link'
-import {NextUIProvider} from "@nextui-org/react";
+// import {NextUIProvider} from "@nextui-org/react";
+
 
 import { Provider } from 'react-redux'
 import store from "../store"
@@ -26,8 +27,8 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
       <main>
       {/* {children} */}
       <Provider store={store}>
-      <NextUIProvider>  {children} </NextUIProvider>
-        </Provider>
+      {children}
+      </Provider>
         </main>
       <h1>
       {/* <a rel="login" href="component/login.tsx" >login</a> */}

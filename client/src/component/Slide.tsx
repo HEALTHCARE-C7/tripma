@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../app/CSS/Slide.css'
+import '../CSS/Slide.css'
 
 export default function Slide() {
   return (
@@ -9,7 +9,7 @@ export default function Slide() {
             <div className="carousel-item active carousel-slide-home">
                 <div className="container">
                     <div className="row" style={{justifyContent:"center",paddingTop:"5rem"}}>
-                            <div className="col-6 text-slide "> It's more than just a trip</div>
+                            <div className="col-6 text-slide "> It&apos;s more than just a trip</div>
                     </div>
                     <div className="row" barre-search style={{paddingTop:"2rem"}}>
                         

@@ -30,6 +30,7 @@ const initialState :authState={
         builder.addCase(Register.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message || 'An error occurred.';
+          
         });
       },
     })
