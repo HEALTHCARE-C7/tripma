@@ -15,22 +15,36 @@ module.exports = {
             throw error
         }
     },
-    // getFlight:async function(req,res){
-    //     try {
-    //         const voyages = await voyage.findMany({where: {seats:seats > 0} })
-    //         res.status(200).send(voyages)
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // },
-    // decrimentSeat:async function(req,res){
-    //     try {
-    //         const voyages = await voyage.update({where: {seats:seats > 0} })
-    //         res.status(200).send(voyages)
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // },
+    getFlight:async function(req,res){
+        try {
+            const voyages = await voyage.findMany({where: {seats:seats > 0} })
+            res.status(200).send(voyages)
+        } catch (error) {
+            throw error
+        }
+    },
+    decrementSeat:async function (req,res) {
+        try {
+            // Find the flight by its ID
+            const flight = await voyage.findMany({ where: { id: Number(req.params.id ) } });
+    console.log(flight[0]);
+            // Check if the flight exists
+            if (flight[0].seats===0) {
+                throw new Error("no seats");
+            }
+    
+            // Decrement the number of available seats by 1
+            const updatedFlight = await voyage.update({
+                where: { id: Number(req.params.id )},
+                data: { seats: flight[0].seats - 1 }
+            });
+    
+            return updatedFlight;
+        } catch (error) {
+            throw error;
+        }
+    },
+    
   
     addOne : async (req, res) => {
         try {

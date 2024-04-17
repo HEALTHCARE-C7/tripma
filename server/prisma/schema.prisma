@@ -37,6 +37,7 @@ model voyage {
   arrival DateTime  
   available Boolean   @default(true)
   seats   Int     @default(10)
+  
  
 
 
