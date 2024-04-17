@@ -13,7 +13,7 @@ const initialState :authState={
     }
 
      const authSlice = createSlice({
-        name: 'auth',
+        name: 'register',
         initialState,
      
      reducers:  {},

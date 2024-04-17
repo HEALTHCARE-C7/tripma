@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../CSS/NaveBarre.css';
+import '../CSS/NaveBarre.css';
 import Link from 'next/link';
 export default function NaveBarre() {
   return (

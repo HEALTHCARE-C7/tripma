@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import {useAppDispatch,useAppSelector} from "../../store"
 import { useForm,Resolver  } from 'react-hook-form'
@@ -26,20 +26,26 @@ const RegisterForm: React.FC = () => {
   const success= useAppSelector(state=>
     state.register.success
   )
- 
-  const submitForm = (f:User) => {
-    console.log(f)
-    dispatch(Register(f)) 
+  const err= useAppSelector(state=>
+    state.register.error
+  )
+ console.log("success", success);
+  
+ const submitForm = (f:User) => {
+   console.log(f)
+   dispatch(Register(f))
+   
+   
+   // d.then(() => router.push('/Login'))
+   
+   
   }
-  const clear=()=>{
-    if(!success){
-      router.push('/Login')
-    }else{
-    router.push('/signup')
-    console.log('o93ad 4adi');
+  useEffect(()=>{
+    if(success){
+      router.push('/Login') 
     }
-  }
-  console.log("succc",success); 
+  },[success])
+
 
 
   return (
@@ -83,7 +89,7 @@ const RegisterForm: React.FC = () => {
             <label className="speciality">Role</label><br/>
             <input type="text" className="form-input-signup" {...register('role')} required placeholder='Your role'/>
           </div>
-          <button type="submit" className="button-signup" onClick={()=>clear()} >Sign Up</button>
+          <button type="submit" className="button-signup"  >Sign Up</button>
         </form>
       </div>
      
