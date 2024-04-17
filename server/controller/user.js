@@ -31,11 +31,10 @@ module.exports = {
      delete userData.password;
      res.status(200).json({ token, user: userData });
     },
+
+    
     getOne:async function(req,res){
         try {
-
-          
-
             const user= await user.findOne({ where: { id:req.user.userId } })
 
             res.status(200).send(user)    
