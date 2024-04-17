@@ -8,6 +8,8 @@ import "./globals.css";
 import Link from 'next/link'
 import { Provider } from 'react-redux'
 import store from "../store"
+import NaveBarre from "../component/NaveBarre";
+
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
       {/* Layout UI */}
       <main>
       {/* {children} */}
-      <Provider store={store}>{children} </Provider>
+      <Provider store={store}>
+      <NaveBarre/>
+        {children} 
+        </Provider>
         </main>
       <h1>
       {/* <a rel="login" href="component/login.tsx" >login</a> */}

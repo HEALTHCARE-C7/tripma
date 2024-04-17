@@ -1,5 +1,5 @@
 import React from 'react'
-import '../app/CSS/Slide.css'
+import '../CSS/Slide.css'
 import { BsAirplaneFill } from "react-icons/bs";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 import { MdFlightLand } from "react-icons/md";

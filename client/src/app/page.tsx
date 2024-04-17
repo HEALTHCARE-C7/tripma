@@ -1,11 +1,7 @@
 import Image from "next/image";
 import Login from "../component/authentication/Logins";
 import SignUp from "../component/authentication/SignUp"
-import NaveBarre from "../component/NaveBarre";
-import Slide from "../component/Slide";
-import Flight from "../component/Flight";
-import PlacesToStay from "../component/PlacesToStay";
-import Reviews from "../component/Reviews";
+import HomePage from "./HomePage";
 
 
 
@@ -20,11 +16,9 @@ export default function Home() {
        <h1>SIGNUP</h1>
        <SignUp />
       </div> */}
-      <NaveBarre/>
-      <Slide/>
-      <Flight/>
-      <PlacesToStay />
-      <Reviews />
+      <HomePage/>
+
+     
     
 
     </main>
