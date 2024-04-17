@@ -38,8 +38,9 @@ module.exports = {
                 where: { id: Number(req.params.id )},
                 data: { seats: flight[0].seats - 1 }
             });
+            res.status(201).send(updatedFlight)
     
-            return updatedFlight;
+            ;
         } catch (error) {
             throw error;
         }
@@ -81,7 +82,8 @@ module.exports = {
     },
     getOnebydeparture:async function(req,res){
         try {
-            const voyages= await voyage.findMany({ where: { departure:req.params.departure} })
+            const voyages= await voyage.findMany({ where: { departure:req.params.departure,
+            } })
             res.status(200).send(voyages)    
         } catch (error) {
             throw error    
