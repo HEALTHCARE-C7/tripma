@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ReservationState, Reservation } from '@/types/Types'; // Ensure correct import path
-import { getAllVoyages,getOnebycompanyName,getOnebydeparture,getOnebydestination, addVoyage,deleteVoyage , update} from '../Action/flightaction';
+import { getAllVoyages,getOnebycompanyName,getOnebydeparture,getOnebydestination, addVoyage,deleteVoyage,getByAll ,decrementSeat,getOnebydepartureplace, update} from '../Action/flightaction';
 
 const initialState: ReservationState = {
   loading: false,
@@ -30,6 +30,34 @@ const authSlice = createSlice({
       })
 
 
+      .addCase(getOnebydepartureplace.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getOnebydepartureplace.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(getOnebydepartureplace .rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
+      .addCase(getByAll.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getByAll.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(getByAll .rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
 
       .addCase(addVoyage.pending, (state, action) => {
         state.loading = true;
@@ -41,6 +69,22 @@ const authSlice = createSlice({
         state.success = true;
       })
       .addCase(addVoyage.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred.';
+      })
+
+
+
+      .addCase(decrementSeat.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(decrementSeat.fulfilled, (state, action) => {
+        state.loading = false;
+        state.flight = action.payload;
+        state.success = true;
+      })
+      .addCase(decrementSeat.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'An error occurred.';
       })
