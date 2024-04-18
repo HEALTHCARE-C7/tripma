@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../CSS/NaveBarre.css'; 
-
+import  Link  from "next/link";
 export default function NaveBarre() {
   const [log,setLog]=useState(false)
 
@@ -20,8 +20,8 @@ export default function NaveBarre() {
                 <a className="nav-link active" aria-current="page" href="/Flights"style={{color:"#605DEC"}}>Flights</a>
                 <a className="nav-link active" aria-current="page" style={{color:"#7C8DB0"}} href="#">Hotels</a>
                 <a className="nav-link" href="#" style={{color:"#7C8DB0"}}>Packages</a>
-                <a className="nav-link" href="#"style={{color:"#7C8DB0"}}>Sign in</a>
-                <button className='btn-blue'> <a className="nav-link" style={{color:"white"}} href="#"  aria-disabled="true">Sign un </a></button>
+                <Link href="/Login" className="nav-link"  style={{color:"#7C8DB0"}} >Sign in</Link>
+                <button className='btn-blue'> <Link href='/signup' className="nav-link"  style={{color:"white"}}   aria-disabled="true">Sign up </Link></button>
             </div>
             </div>
         </div>

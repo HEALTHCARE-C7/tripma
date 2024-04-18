@@ -1,4 +1,7 @@
 const express = require("express")
+require('dotenv').config()
+
+
 let app = express()
 const cors=require('cors')
 require("./database/index.js")

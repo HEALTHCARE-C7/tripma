@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Login from "../component/authentication/Logins";
-import SignUp from "../component/authentication/SignUp"
+
 import HomePage from "./HomePage";
 
 
