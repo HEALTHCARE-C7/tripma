@@ -40,6 +40,7 @@ module.exports = {
             });
             res.status(201).send(updatedFlight)
     
+           
             ;
         } catch (error) {
             throw error;
@@ -119,19 +120,36 @@ module.exports = {
             throw error;
         }
     },
-    avilaible: async function(req, res) {
-        let available = false;
-        if (req.body.State=== "false") {
-            available = true ;
-        }
-    
+    getByAll:async function(req,res){
         try {
-            const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
-            res.status(200).send(true);
+            const voyages= await voyage.findMany({
+                where: { 
+                departureplace: req.params.departureplace,
+                destination:req.params.destination,
+                departure:req.params.departure,
+                decrementSeat:req.params.decrementSeat
+                    
+
+                
+                } })
+            res.status(200).send(voyages)    
         } catch (error) {
-            throw error;
-        }
-    }
+            throw error    
+        } 
+    },
+    // avilaible: async function(req, res) {
+    //     let available = false;
+    //     if (req.body.State=== "false") {
+    //         available = true ;
+    //     }
+    
+    //     try {
+    //         const voyages = await voyage.findMany({ where: { available: companyName,imgUrl,description,price,destination,departureplace,arrival,departure } });
+    //         res.status(200).send(true);
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
     
 
   

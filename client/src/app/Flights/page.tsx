@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React,{useState,useEffect} from 'react'
 import { MdFlightLand } from "react-icons/md";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 import '../../CSS/Slide.css'
@@ -6,13 +7,43 @@ import '../../CSS/Flights.css'
 import Image from 'next/image'
 import PlacesToStay from "../../component/PlacesToStay";
 import Reviews from "../../component/Reviews";
+import {getAllVoyages,getByAll} from  '../../Action/flightaction'
+import {useAppDispatch,useAppSelector} from '../../store'
+import { useNavigate } from "react-router-dom";
 
 
 
 
 export default function page() {
+  const dispatch = useAppDispatch();  
+
+ const [departureplace, setDeparturePlace] = useState('');
+const [destination, setDestination] = useState('');
+const [departureDate, setDepartureDate] = useState('');
+
+const handleSearch = () => {
+  dispatch(getByAll({ departureplace, destination, departure: departureDate }));
+};
+   
+   useEffect(()=>{
+    dispatch(getAllVoyages());
+  
+   
+
+   },[])
+   const flight=useAppSelector(state=>state.flight.flight)
+
+
+      
+
+
+
+   
   return (
     <>
+   { console.log('ffff',flight)}
+    
+    
     <div className="container-fluid" style={{padding:"4rem"}}>
       <div className="row">
       <div className="col-8" >
@@ -23,18 +54,18 @@ export default function page() {
                                 <RiFlightTakeoffFill />
 
                            
-                          <input type="text" placeholder='From where?' style={{backgroundColor:"transparent",border:"none"}} />
+                          <input type="text" placeholder='From where?'   value={departureplace} onChange={(e) => setDeparturePlace(e.target.value)} style={{backgroundColor:"transparent",border:"none"}} />
                        
                         </div>
                         <div className="col-3 col-search">
                         <MdFlightLand />
 
-                        <input type="text" placeholder='Where To?' style={{backgroundColor:"transparent"}} />
+                        <input type="text" placeholder='Where To?'   value={destination} onChange={(e) => setDestination(e.target.value)}   style={{backgroundColor:"transparent"}} />
 
 
                         </div>
                         <div className="col-2 col-search" >
-                        <input type="date" placeholder='Depart-Return' id="" style={{backgroundColor:"transparent"}} name=""/>
+                        <input type="date" placeholder='Depart-Return'   value={departureDate} onChange={(e) => setDepartureDate(e.target.value)}  id="" style={{backgroundColor:"transparent"}} name=""/>
 
                         </div>
                         <div className="col-2 col-search">
@@ -101,37 +132,45 @@ export default function page() {
               <div className="table-scroll">
               <table className="table" >
               <tbody>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem",position:"relative"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
+                {flight.map((element) =>{
+                  return(
+                    <tr>
+                    <th scope="row" style={{display:"flex",gap:"1rem",position:"relative"}}>
                     <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
+                    <Image src="/airline1.png" 
+                              className='image-airline'
+                                width={100}
+                                height={100}
+                                alt=""
+                      />
                     </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
+                      <div>
+                          <p>16h 45m</p>
+                          <p>{element.companyName}</p>
+                      </div>
+  
+  
+                    </th>
+                    <td>7:00-4:15PM</td>
+                    <td>  
+                          <div>
+                              <p>1 step</p>
+                              <p>2h 45m in HNL</p>
+                          </div>
                     </td>
-                </tr>               
-                <tr>
+                    <td>    <div>
+                              <p>$624</p>
+                              <p>round trip</p>
+                          </div>
+                      </td>
+                  </tr>          
+
+                  )
+                   
+                })}
+                 
+                    
+                {/* <tr>
                   <th scope="row" style={{display:"flex",gap:"1rem"}}>
                   <div>
                   <Image src="/airline1.png" 
@@ -551,7 +590,7 @@ export default function page() {
                         </div>
                     </td>
                 </tr>
-              
+               */}
               </tbody>
            </table>
               </div>
