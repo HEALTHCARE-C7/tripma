@@ -59,19 +59,19 @@ const authSlice = createSlice({
       })
 
 
-      .addCase(addVoyage.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(addVoyage.fulfilled, (state, action) => {
-        state.loading = false;
-        state.flight = action.payload;
-        state.success = true;
-      })
-      .addCase(addVoyage.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || 'An error occurred.';
-      })
+      // .addCase(addVoyage.pending, (state, action) => {
+      //   state.loading = true;
+      //   state.error = null;
+      // })
+      // .addCase(addVoyage.fulfilled, (state, action) => {
+      //   state.loading = false;
+      //   state.flight = action.payload;
+      //   state.success = true;
+      // })
+      // .addCase(addVoyage.rejected, (state, action) => {
+      //   state.loading = false;
+      //   state.error = action.error.message || 'An error occurred.';
+      // })
 
 
 

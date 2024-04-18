@@ -9,6 +9,7 @@ export const getAllVoyages =  createAsyncThunk  (
 async () =>{
     try {
         const response = await axios.get('http://localhost:3000/api/voyage');
+        console.log("from the back",response.data);
         return response.data;
      
     } catch (error) {
@@ -131,4 +132,4 @@ export const update = createAsyncThunk(
       }
     }
   );
-// Define other actions for getting, updating, and deleting voyages...
+

@@ -40,7 +40,7 @@ module.exports = {
             });
             res.status(201).send(updatedFlight)
     
-            res.status(201).send(updatedFlight)
+           
             ;
         } catch (error) {
             throw error;
@@ -127,7 +127,7 @@ module.exports = {
                 departureplace: req.params.departureplace,
                 destination:req.params.destination,
                 departure:req.params.departure,
-                // decrementSeat:req.params.decrementSeat
+                decrementSeat:req.params.decrementSeat
                     
 
                 
