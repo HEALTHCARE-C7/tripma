@@ -5,7 +5,7 @@ const {PrismaClient}=require('@prisma/client')
 //     third:"npm install prisma",
 //     fourth:"npx prisma init",
 //     fifth:"npx prisma migrate dev",
-//     sixth:"npx prisma migrate dev --name create-User-table",
+//     sixth:"npx prisma migrate dev --name create-voyage-table",
 //     seventh:"npx prisma migrate dev",
 //     eighth:"npx prisma generate",
     

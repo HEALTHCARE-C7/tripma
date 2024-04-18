@@ -6,42 +6,52 @@ import '../../CSS/Slide.css'
 import '../../CSS/Flights.css'
 import Image from 'next/image'
 import PlacesToStay from "../../component/PlacesToStay";
+import { useForm,Resolver  } from 'react-hook-form'
+
 import Reviews from "../../component/Reviews";
 import {getAllVoyages,getByAll} from  '../../Action/flightaction'
 import {useAppDispatch,useAppSelector} from '../../store'
 import { useNavigate } from "react-router-dom";
-
+import {Reservation,Params} from "../../types/Types"
 
 
 
 export default function page() {
+
   const dispatch = useAppDispatch();  
 
- const [departureplace, setDeparturePlace] = useState('');
-const [destination, setDestination] = useState('');
-const [departureDate, setDepartureDate] = useState('');
+  const [departureplace, setDeparturePlace] = useState('');
+ const [destination, setDestination] = useState('');
+//  const [departureDate, setDepartureDate] = useState('');
+ const [seats, setseats] = useState('');
 
-const handleSearch = () => {
-  dispatch(getByAll({ departureplace, destination, departure: departureDate }));
+
+ 
+ const handleSearch = () => {
+  const obj:Params ={
+    departureplace:departureplace,
+    destination:destination,
+
+  }
+  dispatch(getByAll( obj));
+  console.log("search",flightSearch)
+
+  // console.log("helllo",departureplace, destination);
 };
-   
-   useEffect(()=>{
-    dispatch(getAllVoyages());
+    
+    useEffect(()=>{
+     dispatch(getAllVoyages());
+    },[])
+    const flight=useAppSelector(state=>state.flight.flight)
+    const flightSearch=useAppSelector(state=>state.flight.flightSearch)
+
+    
   
-   
-
-   },[])
-   const flight=useAppSelector(state=>state.flight.flight)
-
-
-      
-
-
-
    
   return (
     <>
-   { console.log('ffff',flight)}
+  
+  
     
     
     <div className="container-fluid" style={{padding:"4rem"}}>
@@ -65,21 +75,20 @@ const handleSearch = () => {
 
                         </div>
                         <div className="col-2 col-search" >
-                        <input type="date" placeholder='Depart-Return'   value={departureDate} onChange={(e) => setDepartureDate(e.target.value)}  id="" style={{backgroundColor:"transparent"}} name=""/>
+                        <input type="date" placeholder='Depart-Return'     id="" style={{backgroundColor:"transparent"}} name=""/>
 
                         </div>
                         <div className="col-2 col-search">
-                        <input type="text" placeholder='1 adult' style={{backgroundColor:"transparent"}} />
+                        <input type="text" placeholder='1 adult'   value={seats} onChange={(e) => setseats(e.target.value)} style={{backgroundColor:"transparent"}} />
 
                         </div>
                         <div className="col-1 col-search">
-                            <button className=' btn btn-blue'> Search</button>
+                            <button onClick={handleSearch} className=' btn btn-blue'> Search</button>
                     
 
 
 
-
-                    </div>
+                    </div>  
                 </div>
                 <div className="row" style={{paddingTop:'2rem'}}>
                     <div className="col-1">
@@ -145,21 +154,21 @@ const handleSearch = () => {
                       />
                     </div>
                       <div>
-                          <p>16h 45m</p>
+                          <p>{element.departureplace}</p>
                           <p>{element.companyName}</p>
                       </div>
   
   
                     </th>
-                    <td>7:00-4:15PM</td>
+                    <td>{element.destination}</td>
                     <td>  
                           <div>
-                              <p>1 step</p>
+                              <p>10seats </p>
                               <p>2h 45m in HNL</p>
                           </div>
                     </td>
                     <td>    <div>
-                              <p>$624</p>
+                              <p>10</p>
                               <p>round trip</p>
                           </div>
                       </td>
