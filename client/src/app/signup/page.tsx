@@ -24,7 +24,7 @@ const RegisterForm: React.FC = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const { register, handleSubmit } =useForm<User>({ resolver })
-  // const {view,setView}=useState(false)
+  const [view,setView]=useState(false)
   const success= useAppSelector(state=>
     state.register.success
   )
@@ -36,15 +36,18 @@ const RegisterForm: React.FC = () => {
  const submitForm = (f:User) => {
    console.log(f)
    dispatch(Register(f))
-   
-   
-   // d.then(() => router.push('/Login'))
-   
-   
   }
+
+
+  
+  const changeRole=()=>{
+    setView(!view)
+  }
+
+
   useEffect(()=>{
     if(success){
-      router.push('/Login') 
+      router.push('/') 
     }
   },[success])
 
@@ -77,19 +80,26 @@ const RegisterForm: React.FC = () => {
           </div>
           <div className="form-group">
             <label className="gender">Gender</label><br/>
-            <input type="text" className="form-input-signup" {...register('gender')} required placeholder='Your Gender'/>
+            <select className='allOption-signup' defaultValue="male" {...register("gender")} required>
+        <option className='option-signup' value="male">Male</option>
+        <option className='option-signup' value="female">Female</option>
+      </select>
           </div>
           <div className="form-group">
             <label className="age">Age</label><br/>
             <input type="number" className="form-input-signup" {...register('age')} required placeholder='Your Age'/>
+            
           </div>
           <div className="form-group">
             <label className="phoneNumber">Phone Number</label><br/>
             <input type="number" className="form-input-signup" {...register('phoneNumber')} required placeholder='Your Phone Number'/>
           </div>
           <div className="form-group">
-            <label className="speciality">Role</label><br/>
-            <input type="text" className="form-input-signup" {...register('role')} required placeholder='Your role'/>
+          <label className="role">Role</label><br/>
+          <select className='allOption-signup' defaultValue="user" {...register("role")} required>
+        <option className='option-signup' value="user">User</option>
+        <option className='option-signup' value="airlineCompanies">Airline Companies</option>
+      </select>
           </div>
           <button type="submit" className="button-signup"  >Sign Up</button>
         </form>

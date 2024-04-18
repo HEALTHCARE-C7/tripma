@@ -27,9 +27,9 @@ module.exports = {
      }
      const token = jwt.sign({ id: foundUser.id },  process.env.SECRET_KEY);
      console.log(token);
-     const userData = JSON.stringify(foundUser);
-     delete userData.password;
-     res.status(200).json({ token, user: userData });
+    //  const userData = JSON.stringify(foundUser);
+     delete foundUser.password;
+     res.status(200).send({ token, user: foundUser });
     },
 
     
