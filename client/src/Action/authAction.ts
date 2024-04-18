@@ -1,8 +1,6 @@
 import axios from 'axios'
-// import React from "react";
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import {User} from '../types/Types'
-// import Router from 'next/router';
 export const Register = createAsyncThunk(
   'auth/register',
   async (obj:User, { rejectWithValue }) => {
@@ -18,7 +16,7 @@ export const Register = createAsyncThunk(
         config
       )
       console.log(data);
-      // Router.push('/Login');
+   
     } catch (error:any) {
     
       if (error.response && error.response.data.message) {

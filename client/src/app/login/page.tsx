@@ -1,38 +1,41 @@
 'use client'
 import { useForm } from 'react-hook-form'
-// import { useRouter } from 'next/router'
+
+import { useRouter } from 'next/navigation'
+
 import { useDispatch,useSelector } from 'react-redux'
 import  {Login}  from '../../Action/authAction'
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
 import '../../CSS/login.css'
 import {useAppDispatch,useAppSelector} from "../../store"
 const LoginScreen = () => {
-//   const navigate = useNavigate();
+
  const user=useAppSelector(state=>state.login.userInfo)
  console.log(user);
  
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch()
   const { register, handleSubmit } = useForm()
+  const router = useRouter()
+
   const success= useAppSelector(state=>
     state.login.success
   )
   console.log('succes',success);
-  // const router = useRouter()
+  
   
   const submitForm = (data:any) => {
     dispatch(Login(data)) 
     console.log("succc",success); 
     console.log(register);
+
+}
+useEffect(()=>{
   if(success){
-    // router.push('/client/src/component/authentication/Logins.tsx')
-  }else{
-
-    console.log('error');
-}
-}
-
+    router.push('/') 
+  }
+},[success])
 const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
