@@ -643,7 +643,7 @@ export default function page() {
      
     <div className="container">
     <PlacesToStay />
-      <Reviews />
+    <Reviews />
     </div>
     </>
   )
