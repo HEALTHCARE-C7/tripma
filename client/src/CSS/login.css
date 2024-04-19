@@ -13,16 +13,17 @@
   }
   
 
-  .modal-content {
+  .modal-content{
     background-color: #fefefe;
     padding: 20px;
     border-radius: 5px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
   }
   
 
-  .login-page {
-    text-align: center;
-  }
+
   
   .login-page h1 {
     margin-bottom: 20px;
