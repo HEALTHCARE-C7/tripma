@@ -127,7 +127,7 @@ module.exports = {
                 where: { 
                 departureplace: req.params.departureplace,
                 destination:req.params.destination,
-                
+                // departure:req.params.departure
                 // seats:req.params.seats,
                 // decrementSeat:req.params.decrementSeat
                     

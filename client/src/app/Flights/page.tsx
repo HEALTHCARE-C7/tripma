@@ -22,30 +22,42 @@ export default function page() {
 
   const [departureplace, setDeparturePlace] = useState('');
  const [destination, setDestination] = useState('');
-//  const [departureDate, setDepartureDate] = useState('');
+//  const [departure, setDeparture] = useState(new Date());
+ const [departure, setDeparture] = useState('');
  const [seats, setseats] = useState('');
 
 
- 
  const handleSearch = () => {
-  const obj:Params ={
-    departureplace:departureplace,
-    destination:destination,
-
-  }
-  dispatch(getByAll( obj));
-  console.log("search",flightSearch)
-
-  // console.log("helllo",departureplace, destination);
-};
+   const obj:Params ={
+     departureplace:departureplace,
+     destination:destination,
+     
+     
+    }
+  
+    dispatch(getByAll( obj));
+    console.log("search",flightSearch)
     
-    useEffect(()=>{
-     dispatch(getAllVoyages());
-    },[])
-    const flight=useAppSelector(state=>state.flight.flight)
-    const flightSearch=useAppSelector(state=>state.flight.flightSearch)
+    // console.log("helllo",departureplace, destination);
+  };
+  
+  useEffect(()=>{
+    dispatch(getAllVoyages());
+  },[])
+  const flight=useAppSelector(state=>state.flight.flight)
+  const flightSearch=useAppSelector(state=>state.flight.flightSearch)
+ 
+  
+  
+    // const formatDate = (departure: Date) => {
+    //   const year = departure.getFullYear();
+    //   const month = String(departure.getMonth() + 1).padStart(2, '0');
+    //   const day = String(departure.getDate()).padStart(2, '0');
+    //   console.log()
+      
 
-    
+    //   return `${day}-${month}-${year}`;
+    // };
   
    
   return (
@@ -75,7 +87,8 @@ export default function page() {
 
                         </div>
                         <div className="col-2 col-search" >
-                        <input type="date" placeholder='Depart-Return'     id="" style={{backgroundColor:"transparent"}} name=""/>
+                          
+                        <input type="date" placeholder='Depart-Return'        id="" style={{backgroundColor:"transparent"}} name=""/>
 
                         </div>
                         <div className="col-2 col-search">
@@ -164,7 +177,7 @@ export default function page() {
                     <td>  
                           <div>
                               <p>10seats </p>
-                              <p>2h 45m in HNL</p>
+                              <p>{element.departure}</p>
                           </div>
                     </td>
                     <td>    <div>
