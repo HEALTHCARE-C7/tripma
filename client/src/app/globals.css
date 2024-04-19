@@ -31,3 +31,9 @@ h6 {
   font-size:x-large;
   font-weight:500;
 }
+.padding-class{
+  
+    /* padding-top: 1rem;
+    padding-bottom: 1rem; */
+    padding: 1rem 2rem;
+}

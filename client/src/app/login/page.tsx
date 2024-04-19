@@ -41,8 +41,9 @@ const togglePasswordVisibility = () => {
   };
     return (
      
-      <div className="modal-content">
-        <div className="login-page">
+   <div className="container">
+        <div className="modal-content padding-class">
+        <div className="login-page" >
           <h1>Log In</h1>
           <form onSubmit={handleSubmit(submitForm)}>
             <div className="form-group-login">
@@ -77,6 +78,7 @@ const togglePasswordVisibility = () => {
           </form>
         </div>
       </div>
+   </div>
    
     
     )
