@@ -52,6 +52,7 @@ module.exports = {
         try {
             const  {companyName,imgUrl,description,price,destination,departureplace,arrival,departure}=req.body
             const voyages = await voyage.create({data:{companyName,imgUrl,description,departureplace,price,destination,arrival,departure}})
+         
             res.status(201).send(voyages)
         } catch (error) {
             throw error
@@ -126,8 +127,9 @@ module.exports = {
                 where: { 
                 departureplace: req.params.departureplace,
                 destination:req.params.destination,
-                departure:req.params.departure,
-                decrementSeat:req.params.decrementSeat
+                
+                // seats:req.params.seats,
+                // decrementSeat:req.params.decrementSeat
                     
 
                 

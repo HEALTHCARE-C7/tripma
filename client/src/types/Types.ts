@@ -18,17 +18,25 @@ export interface Message {
     error: string |null ;
     success: boolean
     flight : Reservation []
+    flightSearch:Params[]
 
     
+}
+export interface Params{
+  departureplace:string;
+  destination:string;
+
 }
 export interface Reservation {
   companyName  :  String
   imgUrl :String
   description :  String  
   price :Number 
-  departure :String
+  departure : Date
+  departureplace : String
   destination :String
   arrival : Date
+  seats   : Number 
   
 }
 export interface destinationState {

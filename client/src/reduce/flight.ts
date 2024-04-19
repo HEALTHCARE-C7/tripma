@@ -5,6 +5,7 @@ import { getAllVoyages,getOnebycompanyName,getOnebydeparture,getOnebydestination
 const initialState: ReservationState = {
   loading: false,
   flight: [],
+  flightSearch:[],
   error: null,
   success: false,
 };
@@ -15,7 +16,7 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllVoyages.pending, (state, action) => {
+      .addCase(getAllVoyages.pending, (state) => {
         state.loading = true;
         state.error = null;
       })

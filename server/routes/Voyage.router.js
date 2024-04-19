@@ -14,7 +14,7 @@ router.get('/departureplace/:departureplace',voyage.getOnebydepartureplace)
 // router.patch('/decrementSeat/:id',voyage.decrementSeat)
 
 router.patch('/decrementSeat/:id',voyage.decrementSeat)
-router.get('/getByAll/:departureplace/:destination/:departure',voyage.getByAll)
+router.get('/getByAll/:departureplace/:destination',voyage.getByAll)
 
 // router.get('/avilaible',voyage.avilaible)
 router.delete('/:id',voyage.deleteVoyage )

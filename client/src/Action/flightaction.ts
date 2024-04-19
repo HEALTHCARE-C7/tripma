@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-
+import {Reservation,Params} from '../types/Types'
 
 
 export const getAllVoyages =  createAsyncThunk  (
@@ -9,7 +8,7 @@ export const getAllVoyages =  createAsyncThunk  (
 async () =>{
     try {
         const response = await axios.get('http://localhost:3000/api/voyage');
-        console.log("from the back",response.data);
+        // console.log("from the back",response.data);
         return response.data;
      
     } catch (error) {
@@ -43,13 +42,12 @@ async (departureplace) =>{
    
 })
 
-export const getByAll =  createAsyncThunk  (
-    "auth/flight/getByAll",
-async ({departureplace,destination,departure}:any) =>{
+export const getByAll =  createAsyncThunk  ("auth/flight/getByAll",
+async ( obj:Params) =>{
     try {
-        const response = await axios.patch(`http://localhost:3000/api/voyage/getByAll/${departureplace},${destination},${departure}`);
+        const response = await axios.get(`http://localhost:3000/api/voyage/getByAll/${obj.departureplace}/${obj.destination}`);
+        console.log("from back search",response.data);
         return response.data;
-     
     } catch (error) {
         console.error(error);
     }
