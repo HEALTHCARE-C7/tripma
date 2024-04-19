@@ -9,6 +9,19 @@ export const getAllVoyages =  createAsyncThunk  (
 async () =>{
     try {
         const response = await axios.get('http://localhost:3000/api/voyage');
+        console.log("from the back",response.data);
+        return response.data;
+     
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
+export const decrementSeat =  createAsyncThunk  (
+    "auth/flight/decrementSeat",
+async (id) =>{
+    try {
+        const response = await axios.patch(`http://localhost:3000/api/voyage/decrementSeat/${id}`);
         return response.data;
      
     } catch (error) {
@@ -17,6 +30,31 @@ async () =>{
    
 })
 
+export const getOnebydepartureplace =  createAsyncThunk  (
+    "auth/flight/getOnebydepartureplace",
+async (departureplace) =>{
+    try {
+        const response = await axios.patch(`http://localhost:3000/api/voyage/getOnebydepartureplace/${departureplace}`);
+        return response.data;
+     
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
+
+export const getByAll =  createAsyncThunk  (
+    "auth/flight/getByAll",
+async ({departureplace,destination,departure}:any) =>{
+    try {
+        const response = await axios.patch(`http://localhost:3000/api/voyage/getByAll/${departureplace},${destination},${departure}`);
+        return response.data;
+     
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
 
 export const getOnebycompanyName =  createAsyncThunk  (
     "auth/flight/companyName",
@@ -94,4 +132,4 @@ export const update = createAsyncThunk(
       }
     }
   );
-// Define other actions for getting, updating, and deleting voyages...
+

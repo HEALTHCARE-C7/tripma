@@ -6,12 +6,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
-// import {NextUIProvider} from "@nextui-org/react";
+import {NextUIProvider} from "@nextui-org/react";
 
 
 import { Provider } from 'react-redux'
 import store from "../store"
-import NaveBarre from "../component/navBarre";
+import NaveBarre from "../component/NavBarre";
 
 
 

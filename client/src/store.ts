@@ -3,6 +3,8 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import authReducer from './reduce/authReduceLogin'
 import authReducerRegister from './reduce/authReducerRegister'
+import flight from './reduce/flight'
+
 
 
 const store = configureStore({
@@ -10,6 +12,7 @@ const store = configureStore({
 		login: authReducer,
 		register: authReducerRegister,
 		auth: authReducer,
+		flight:flight
 		
 	},
 });

@@ -19,6 +19,7 @@ model User {
 
 
 }
+
 enum Role {
     admin
     user
@@ -29,6 +30,7 @@ enum Gender {
   male
   female
 }
+
 model voyage {
   id      Int      @id @default(autoincrement())
   companyName    String
