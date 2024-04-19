@@ -20,6 +20,7 @@ model User {
    rooms             Room[] 
    join JoinChat[] 
 }
+
 enum Role {
     admin
     user
@@ -65,7 +66,7 @@ model voyage {
   destination String
   arrival DateTime  
   available Boolean   @default(true)
-  seats   Int     @default(10)
+  seats   Int     @default(200)
   
  
 

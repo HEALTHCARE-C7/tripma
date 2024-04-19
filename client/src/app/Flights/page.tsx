@@ -1,18 +1,59 @@
-import React from 'react'
+'use client'
+import React,{useState,useEffect} from 'react'
 import { MdFlightLand } from "react-icons/md";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 import '../../CSS/Slide.css'
 import '../../CSS/Flights.css'
 import Image from 'next/image'
 import PlacesToStay from "../../component/PlacesToStay";
-import Reviews from "../../component/Reviews";
+import { useForm,Resolver  } from 'react-hook-form'
 
+import Reviews from "../../component/Reviews";
+import {getAllVoyages,getByAll} from  '../../Action/flightaction'
+import {useAppDispatch,useAppSelector} from '../../store'
+import { useNavigate } from "react-router-dom";
+import {Reservation,Params} from "../../types/Types"
 
 
 
 export default function page() {
+
+  const dispatch = useAppDispatch();  
+
+  const [departureplace, setDeparturePlace] = useState('');
+ const [destination, setDestination] = useState('');
+//  const [departureDate, setDepartureDate] = useState('');
+ const [seats, setseats] = useState('');
+
+
+ 
+ const handleSearch = () => {
+  const obj:Params ={
+    departureplace:departureplace,
+    destination:destination,
+
+  }
+  dispatch(getByAll( obj));
+  console.log("search",flightSearch)
+
+  // console.log("helllo",departureplace, destination);
+};
+    
+    useEffect(()=>{
+     dispatch(getAllVoyages());
+    },[])
+    const flight=useAppSelector(state=>state.flight.flight)
+    const flightSearch=useAppSelector(state=>state.flight.flightSearch)
+
+    
+  
+   
   return (
     <>
+  
+  
+    
+    
     <div className="container-fluid" style={{padding:"4rem"}}>
       <div className="row">
       <div className="col-8" >
@@ -23,32 +64,31 @@ export default function page() {
                                 <RiFlightTakeoffFill />
 
                            
-                          <input type="text" placeholder='From where?' style={{backgroundColor:"transparent",border:"none"}} />
+                          <input type="text" placeholder='From where?'   value={departureplace} onChange={(e) => setDeparturePlace(e.target.value)} style={{backgroundColor:"transparent",border:"none"}} />
                        
                         </div>
                         <div className="col-3 col-search">
                         <MdFlightLand />
 
-                        <input type="text" placeholder='Where To?' style={{backgroundColor:"transparent"}} />
+                        <input type="text" placeholder='Where To?'   value={destination} onChange={(e) => setDestination(e.target.value)}   style={{backgroundColor:"transparent"}} />
 
 
                         </div>
                         <div className="col-2 col-search" >
-                        <input type="date" placeholder='Depart-Return' id="" style={{backgroundColor:"transparent"}} name=""/>
+                        <input type="date" placeholder='Depart-Return'     id="" style={{backgroundColor:"transparent"}} name=""/>
 
                         </div>
                         <div className="col-2 col-search">
-                        <input type="text" placeholder='1 adult' style={{backgroundColor:"transparent"}} />
+                        <input type="text" placeholder='1 adult'   value={seats} onChange={(e) => setseats(e.target.value)} style={{backgroundColor:"transparent"}} />
 
                         </div>
                         <div className="col-1 col-search">
-                            <button className=' btn btn-blue'> Search</button>
+                            <button onClick={handleSearch} className=' btn btn-blue'> Search</button>
                     
 
 
 
-
-                    </div>
+                    </div>  
                 </div>
                 <div className="row" style={{paddingTop:'2rem'}}>
                     <div className="col-1">
@@ -101,456 +141,44 @@ export default function page() {
               <div className="table-scroll">
               <table className="table" >
               <tbody>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem",position:"relative"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
+                {flight.map((element) =>{
+                  return(
+                    <tr>
+                    <th scope="row" style={{display:"flex",gap:"1rem",position:"relative"}}>
                     <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
+                    <Image src="/airline1.png" 
+                              className='image-airline'
+                                width={100}
+                                height={100}
+                                alt=""
+                      />
                     </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
+                      <div>
+                          <p>{element.departureplace}</p>
+                          <p>{element.companyName}</p>
+                      </div>
+  
+  
+                    </th>
+                    <td>{element.destination}</td>
+                    <td>  
+                          <div>
+                              <p>10seats </p>
+                              <p>2h 45m in HNL</p>
+                          </div>
                     </td>
-                </tr>               
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
+                    <td>    <div>
+                              <p>10</p>
+                              <p>round trip</p>
+                          </div>
+                      </td>
+                  </tr>          
 
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row" style={{display:"flex",gap:"1rem"}}>
-                  <div>
-                  <Image src="/airline1.png" 
-                            className='image-airline'
-                              width={100}
-                              height={100}
-                              alt=""
-                    />
-                  </div>
-                    <div>
-                        <p>16h 45m</p>
-                        <p>Hawaiian Airlines</p>
-                    </div>
-
-
-                  </th>
-                  <td>7:00-4:15PM</td>
-                  <td>  
-                        <div>
-                            <p>1 step</p>
-                            <p>2h 45m in HNL</p>
-                        </div>
-                  </td>
-                  <td>    <div>
-                            <p>$624</p>
-                            <p>round trip</p>
-                        </div>
-                    </td>
-                </tr>
+                  )
+                   
+                })}
+                 
+                    
               
               </tbody>
            </table>
@@ -643,7 +271,7 @@ export default function page() {
      
     <div className="container">
     <PlacesToStay />
-      <Reviews />
+    <Reviews />
     </div>
     </>
   )

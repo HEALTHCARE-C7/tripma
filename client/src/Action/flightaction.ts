@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-
+import {Reservation,Params} from '../types/Types'
 
 
 export const getAllVoyages =  createAsyncThunk  (
@@ -9,6 +8,19 @@ export const getAllVoyages =  createAsyncThunk  (
 async () =>{
     try {
         const response = await axios.get('http://localhost:3000/api/voyage');
+        // console.log("from the back",response.data);
+        return response.data;
+     
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
+export const decrementSeat =  createAsyncThunk  (
+    "auth/flight/decrementSeat",
+async (id) =>{
+    try {
+        const response = await axios.patch(`http://localhost:3000/api/voyage/decrementSeat/${id}`);
         return response.data;
      
     } catch (error) {
@@ -17,6 +29,30 @@ async () =>{
    
 })
 
+export const getOnebydepartureplace =  createAsyncThunk  (
+    "auth/flight/getOnebydepartureplace",
+async (departureplace) =>{
+    try {
+        const response = await axios.patch(`http://localhost:3000/api/voyage/getOnebydepartureplace/${departureplace}`);
+        return response.data;
+     
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
+
+export const getByAll =  createAsyncThunk  ("auth/flight/getByAll",
+async ( obj:Params) =>{
+    try {
+        const response = await axios.get(`http://localhost:3000/api/voyage/getByAll/${obj.departureplace}/${obj.destination}`);
+        console.log("from back search",response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+   
+})
 
 export const getOnebycompanyName =  createAsyncThunk  (
     "auth/flight/companyName",
@@ -94,4 +130,4 @@ export const update = createAsyncThunk(
       }
     }
   );
-// Define other actions for getting, updating, and deleting voyages...
+
