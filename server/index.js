@@ -6,7 +6,7 @@ let app = express()
 const cors=require('cors')
 require("./database/index.js")
 const userRouter=require("./routes/User.routes.js")
-
+const chatRouter=require("./routes/chat.routes")
 const reviewRouter=require("./routes/Review.routes.js")
 
 const voyageRouter=require('./routes/Voyage.router.js')
@@ -23,7 +23,7 @@ app.use('/api/user',userRouter);
 
 app.use('/api/review',reviewRouter)
 
-
+app.use('/api/chat',chatRouter)
 app.use('/api/voyage',voyageRouter)
 app.use('/api/destination',destination)
 
