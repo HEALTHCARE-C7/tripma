@@ -1,8 +1,8 @@
 
 .username__input {
     padding: 10px;
-    width: 50%;
-  }
+    width: 100%;
+}
  
   .chat {
     width: 100%;
@@ -10,45 +10,61 @@
     display: flex;
     align-items: center;
   }
-  .chat__sidebar {
+  /* .chat__sidebar {
     height: 100%;
-    background-color:  rgb(4, 4, 197);
+    background-color:  rgb(53, 53, 185);
     flex: 0.2;
     padding: 20px;
     border-right: 1px solid #fdfdfd;
-  }
+  } */
   .chat__main {
     height: 100%;
     flex: 0.8;
   }
-  .chat__header {
+  /* .chat__header {
     margin: 30px 0 20px 0;
   }
   .chat__users > * {
     margin-bottom: 10px;
     color: #607eaa;
-    font-size: 14px;
+    font-size: 30px;
+    
+  
   }
+  .chat__users h1{
+    color: rgb(248, 246, 246);
+    font-style: italic;
+  } */
   .online__users > * {
     margin-bottom: 10px;
     color: rgb(211, 11, 11);
     font-style: italic;
+    font-size: 40px;
+
   }
-  .chat__mainHeader {
+  /* .chat__mainHeader {
     width: 100%;
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: rgb(4, 4, 197);
+    background-color: rgb(73, 73, 165);
+  }
+  .chat__mainHeader h1{
+color: #fdfdfd;
+font-size: 40px;
+font-style: italic;
+
+
+
   }
   .leaveChat__btn {
     padding: 10px;
-    width: 150px;
+    width: 65px;
     border: none;
     outline: none;
-    background-color: #66eaf3;
+   
     cursor: pointer;
     color: black;
   }
@@ -62,13 +78,13 @@
   
   .message__container > * {
     margin-bottom: 10px;
-  }
-  .chat__footer {
+  } */
+  /* .chat__footer {
     padding: 10px;
     background-color:  rgb(4, 4, 197);
     height: 10vh;
-  }
-  .form {
+  } */
+  /* .form {
     width: 100%;
     height: 100%;
     display: flex;
@@ -89,18 +105,22 @@
     padding: 10px;
     border: none;
     outline: none;
-    color: black;
+    color: white;
     cursor: pointer;
-  }
-  .sendBtn:hover {
+  } */
+  /* .sendBtn:hover {
     background-color:rgb(37, 37, 163);
-  }
-  .message__recipient {
-    background-color: black;
+  } */
+  /* .message__recipient {
+    background-color: white;
     width: 300px;
     padding: 10px;
     border-radius: 10px;
     font-size: 15px;
+  }
+  .message__recipient p{
+    font-size: 15px;
+right: 400px;
   }
   .message__sender {
     background-color: rgb(194, 243, 194);
@@ -110,8 +130,10 @@
     margin-left: auto;
     font-size: 15px;
   }
-  .message__chats > p {
-    font-size: 13px;
+  .message__recipient > p {
+    font-size: 20px;
+
+
   }
   .sender__name {
     text-align: right;
@@ -121,4 +143,6 @@
     bottom: 50px;
     font-size: 13px;
     font-style: italic;
-  }
+  } */
+
+  

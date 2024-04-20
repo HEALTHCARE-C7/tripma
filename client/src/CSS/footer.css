@@ -1,0 +1,32 @@
+.form {
+    width: 80rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between(évert);
+  }
+  .message {
+    width: 50rem;
+    height: 100%;
+    border-radius: 10px;
+    border: black solid;
+    outline: none;
+    padding: 15px;
+  }
+  .sendBtn {
+    width: 150px;
+    background-color:#66eaf3;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+  }
+  .chat__footer {
+    padding: 10px;
+    background-color:  rgb(4, 4, 197);
+    height: 10vh;
+  }
+  .sendBtn:hover {
+    background-color:rgb(37, 37, 163);
+  }

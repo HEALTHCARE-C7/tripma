@@ -1,7 +1,7 @@
 'use client'
 import axios from 'axios';
 import {useAppSelector,useAppDispatch} from '../../store'
-
+import '../../CSS/footer.css'
 import React, {  useState } from 'react';
 // import ChatBody from './ChatBody';
 interface PropsChatBar{

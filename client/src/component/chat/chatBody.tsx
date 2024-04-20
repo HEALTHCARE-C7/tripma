@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import {U_ser,R__oom,R_oom,M_esages} from '../../types/Types';
 import ChatFooter from './chatFooter'
 import { useAppSelector } from '@/store';
+import  Link  from "next/link";
+import '../../CSS/body.css'
+import { IoArrowForwardOutline } from "react-icons/io5";
 interface ClientToServerEvents {
   noArg: () => void;
   basicEmit: (a: number, b: string, c: Buffer) => void;
@@ -17,6 +20,7 @@ interface PropsChatBar{
 }
 
 const ChatBody = (props:PropsChatBar) => {
+  const User=useAppSelector((state) => state.user.userInfo);
   
   // const navigate = useNavigate();
   const [messages, setMessages] = useState(props.rooms.rooms.messages);
@@ -42,22 +46,22 @@ return () => props.socket.off('message');
 
   return (
     <div  className="chat__main">
+      
       <header className="chat__mainHeader">
-        <p>Hangout with Colleagues</p>
-        <button className="leaveChat__btn" >
-          LEAVE CHAT
-        </button>
+        <h1 >{User?.firstName}</h1>
+        <Link className="leaveChat__btn" href={"/"} >
+        <IoArrowForwardOutline />
+        </Link>
       </header>
-
         {/* <ChatFooter/> */}
       <div className="message__container">
         {messages.map((message) =>
           <div className="message__chats" key={message.id}>
-              <p>{message.users.firstName}</p>
+            <h2>{message.users.firstName}</h2>
               <div className="message__recipient">
                 <p>{message.content}</p>
               </div>
-            </div>
+             </div>
         
           
           

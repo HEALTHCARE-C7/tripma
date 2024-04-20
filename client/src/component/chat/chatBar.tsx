@@ -1,6 +1,7 @@
 'use client'
 import React,{ useEffect } from "react";
 import {U_ser,R__oom} from '../../types/Types';
+import '../../CSS/bar.css'
 interface ChatBarProps {
   getRoomByUserId: (id: number) => void;
 }
@@ -18,7 +19,7 @@ const ChatBar = (props:PropsChatBar) => {
 
   return (
     <div className="chat__sidebar">
-      <h2>Open Chat</h2>
+      <h1> Chats</h1>
       {props.rooms.map((e:R__oom) => {
         console.log(e)
       
@@ -27,7 +28,7 @@ const ChatBar = (props:PropsChatBar) => {
           <div className="chat__users">
           {e.rooms.join.map((u:U_ser) => {
            
-              return  props.id!== u.users.id&&<p onClick={()=>props.changeView(e.id)} key={u.users.id}>{u.users.firstName}</p>
+              return  props.id!== u.users.id&&<button className="chat__users"  onClick={()=>props.changeView(e.id)} key={u.users.id}>{u.users.firstName}</button>
               })}
           </div>
         </div>
