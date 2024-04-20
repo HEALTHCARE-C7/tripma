@@ -35,9 +35,9 @@ module.exports = {
     
     getOne:async function(req,res){
         try {
-            const user= await user.findOne({ where: { id:req.user.userId } })
-
-            res.status(200).send(user)    
+            const users= await user.findFirst({ where: { id:req.user.userId } })
+            console.log("helloqsqs",req.user.userId);
+            res.status(200).send(users)    
         } catch (error) {
             throw error    
         }

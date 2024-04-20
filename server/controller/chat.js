@@ -3,8 +3,8 @@ const {message,user,room,joinChat}=require('../database/index')
 module.exports = {
 addMessage:async function(req,res){
     try {
-        const { fromId, content } = req.body
-        const messages=await message.create({data:{fromId,content}})
+        const { userId, content,roomId } = req.body
+        const messages=await message.create({data:{userId,content,roomId}})
         res.status(200).send(messages)
     } catch (error) {
         throw error
@@ -12,7 +12,7 @@ addMessage:async function(req,res){
 },
 getAllMessages:async function(req,res){
     try {
-        const messages=await message.findMany({})
+        const messages=await message.findMany({where:{roomId:Number(req.params.roomId)}})
         res.status(200).send(messages)
     } catch (error) {
         throw error
@@ -20,7 +20,47 @@ getAllMessages:async function(req,res){
 },
 getAllRoomByUserId:async function(req, res){
     try {
-        const rooms=await room.findMany({where: {userId:req.params.userId}})
+        const rooms=await joinChat.findMany(
+            {
+                where: {
+                    userId:Number(req.params.userId)
+                },
+                select:{
+                id:true,
+                  rooms: {
+                    select:{
+                        join:{
+                            select:{
+                               users:{
+                                select:{
+                                    id: true,
+                                    firstName:true   
+                                }
+                               } 
+                            }    
+                        },
+                        id:true,
+                        messages: {
+                            select:{
+                                id:true,
+                                userId:true,
+                                roomId:true,
+                                content:true,
+                                createdAt:true,
+                                users:{
+                                    select:{
+                                        id: true,
+                                        firstName:true   
+                                    }
+                                }
+                            }
+    
+                    }
+                  }
+                }
+                }
+
+        })
         res.status(200).send(rooms)
     } catch (error) {
         throw error
@@ -34,23 +74,8 @@ getAllUser:async function(req, res){
         throw error
     }
 },
-createMessage:async function(req,res){
-    try {
-        const { fromId, roomId, content } = req.body
-        const messages=await message.create({data:{fromId,roomId,content}})
-        res.status(200).send(messages)
-    } catch (error) {
-        throw error
-    }
-},
-getAllMessageInRoom:async function(req,res){
-    try {
-        const messages=await message.findMany({where:{roomId:req.params.roomId}})
-        res.status(200).send(messages)
-    } catch (error) {
-        throw error
-    }
-},
+
+
  createRoom: async function (req, res) {
     try {
         const rooms = await room.create({});

@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../CSS/NaveBarre.css'; 
 import  Link  from "next/link";
 import { FaRegUser } from "react-icons/fa";
 export default function NaveBarre() {
   
-const token=localStorage.getItem('token')
+    const [token, setToken] = useState<string | null>(null);
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      
+      setToken(token);
+    }, []);
+  
+    const handleLogout = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault();
+      localStorage.removeItem('token');
+      setToken(null);
+    }
  
   return (
     <div>

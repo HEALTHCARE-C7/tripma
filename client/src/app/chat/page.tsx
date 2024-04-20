@@ -1,102 +1,101 @@
 'use client'
+import React, { useEffect, useState,useLayoutEffect
+} from 'react';
+import {U_ser,R__oom} from '../../types/Types';
+import {getRoomByUserId,createRoom} from '../../Action/user'
+
+import axios from 'axios';
+import ChatBar from '../../component/chat/chatBar';
+import ChatBody from '../../component/chat/chatBody';
+import ChatFooter from '../../component/chat/chatFooter';
+
+import {oneUser} from '../../Action/user'
+import '../../CSS/chat.css'
+import {useAppSelector,useAppDispatch} from '../../store'
 import  io  from "socket.io-client";
-import React, { useState, useEffect } from 'react';
-// import style from "../../CSS/chat.css"
+// import socketIO from 'socket.io-client';
 
-interface IMsgDataTypes {
-    roomId: String | number;
-    user: String;
-    msg: String;
-    time: String;
-  }
-  interface state{
-
-  }
-
-const socket = io('http://localhost:4000');
-
-const page = ({ socket, username, roomId }: any) => {
-//     const [currentMsg, setCurrentMsg] = useState("");
-//   const [chat, setChat] = useState<IMsgDataTypes[]>([]);
-
-    socket.on('connect', () => {
-        console.log('Connected to server');
-    });
-
-    // const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     if (currentMsg !== "") {
-    //       const msgData: IMsgDataTypes = {
-    //         roomId,
-    //         user: username,
-    //         msg: currentMsg,
-    //         time:
-    //           new Date(Date.now()).getHours() +
-    //           ":" +
-    //           new Date(Date.now()).getMinutes(),
-    //       };
-    //       await socket.emit("send_msg", msgData);
-    //       setCurrentMsg("");
-    //     }
-    //   };
-    // useEffect(() => {
-    //     socket.on("receive_msg", (data: IMsgDataTypes) => {
-    //       setChat((pre) => [...pre, data]);
-    //     });
-    //   }, [socket]);
-      
-      
-        
-         
-
-  return (
-    <div>
-      <div className={style.chat_div}>
-      <div className={style.chat_border}>
-        <div style={{ marginBottom: "1rem" }}>
-          <p>
-            Name: <b>{username}</b> and Room Id: <b>{roomId}</b>
-          </p>
-        </div>
-        <div>
-          {chat.map(({ roomId, user, msg, time }, key) => (
-            <div
-              key={key}
-              className={
-                user == username
-                  ? style.chatProfileRight
-                  : style.chatProfileLeft
-              }
-            >
-              <span
-                className={style.chatProfileSpan}
-                style={{ textAlign: user == username ? "right" : "left" }}
-              >
-                {user.charAt(0)}
-              </span>
-              <h3 style={{ textAlign: user == username ? "right" : "left" }}>
-                {msg}
-              </h3>
-            </div>
-          ))}
-        </div>
-        <div>
-          <form onSubmit={(e) => sendData(e)}>
-            <input
-              className={style.chat_input}
-              type="text"
-              value={currentMsg}
-              placeholder="Type your message.."
-              onChange={(e) => setCurrentMsg(e.target.value)}
-            />
-            <button className={style.chat_button}>Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  
-    </div>
-  )
+interface ChatBarProps {
+  getRoomByUserId: (userId: number) => void;
 }
 
-export default page
+
+const socket = io('http://localhost:4000');
+const ChatPage = () => {
+  const rooms = useAppSelector((state) => state.user.room);
+console.log(rooms)
+  const cUser=useAppSelector((state) => state.user.userInfo);
+  console.log("",cUser);
+
+
+  const id= cUser?cUser.id:null;
+  console.log(cUser,"current user");
+  const [messages, setMessages] = useState();
+  const [sockets, setSockets] = useState(null);
+  const [messageInput,setMessageInput]=useState('');
+  const [allRoom,setAllRoom]=useState([]);
+  const [viewId,setViewId]=useState(0)
+
+const dispatch=useAppDispatch()
+    
+useEffect(()=>{
+  console.log("idddddddddddddddd",id);
+  
+  id?dispatch(getRoomByUserId(id)):console.log("nothing to do")
+
+ },[id])
+ useEffect(()=>{
+  const  token:string=localStorage.getItem('token')|| ''
+  console.log(token);
+  
+  if(token) {
+    dispatch(oneUser(token))
+  }
+  
+},[])
+
+// useEffect(() => {
+ const changeView=(id:number)=>{
+  console.log("idddd view",id)
+  setViewId(id)
+ }
+ 
+
+  socket.on('message', (data) => {
+   
+    console.log('data is ready',data);
+  });
+
+//   return () => socket.off('message');
+// }, []);
+
+
+ 
+
+ 
+
+////////////////////////////////
+
+////////////////////////////////
+
+
+     
+      // console.log(socket);
+  return (
+    <div className="chat">
+      <ChatBar changeView={changeView} rooms={rooms} id={id} />
+      <div>
+        {rooms.map((room,i) =>(
+      viewId=== room.id&&  (<div  key={i}>
+        <ChatBody socket={socket} rooms={room}/>
+       
+
+      </div>)
+    )) }
+      </div>
+    
+    </div>
+  );
+};
+
+export default ChatPage;

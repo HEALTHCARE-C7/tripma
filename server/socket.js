@@ -21,14 +21,22 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
   console.log(`User connected ${socket.id}`);
+  socket.on("join", (room) => {
+    console.log("A user joined the room " + room);
+    // Join the socket to the specified room
+    socket.join(room);
+    // Send a welcome message to the socket
 
+    // Broadcast a message to the other sockets in the room
+   
+  });
 
 
   socket.on('message', (message) => {
       console.log('Received message:', message);
       
      
-      io.emit('message', message);
+      io.to(message.roomId).emit('message', message);
   });
 
 
