@@ -1,0 +1,99 @@
+.hello{
+    font-weight: bold;
+    color:hwb(0 18% 81%);
+    font-size:25px;
+    margin-left: 300px;
+
+}
+.iheb{
+    font-weight: bold;
+    color:hwb(0 18% 81%);
+    
+    font-size:40px;
+    margin-top: 10px;
+    margin-left: 300px;
+}
+.modal-content70{
+    background-color: hsl(0, 0%, 100%);
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    height: 1000px;
+    margin-top: 200px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-input-adresse {
+    width: 10rem;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    gap: 10rem;
+  }
+  .form-input-number {
+    width: 50%;
+    padding: 1px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 150px;
+    height: 90px;
+  }
+  .save{
+    color: hsl(0, 50%, 98%);
+  }
+
+  .button-save {
+    display:flex;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: hsl(240, 51%, 61%);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 600px;
+    width: 10rem;
+  }
+  .button-save:hover {
+    background-color: hsl(240, 1%, 29%);
+  }
+
+  .form-input-country{
+    width: 19rem;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 100px;
+  }
+  .navbare {
+    /* transition: background-color 0.3s ease; */
+    margin-left: 300px;
+  }
+  
+  
+  
+  .navbare a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+      
+  }
+  
+  nav a:hover {
+    background-color: #e5e5e5;
+  }
+  .PhoneInputCountryIconImg{
+    width: 20%;
+    margin-left: 100px;
+   
+  }
+  .email{
+   margin-top: 30px;
+    margin-left: 20px;
+  }

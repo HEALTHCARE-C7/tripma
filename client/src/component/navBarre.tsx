@@ -4,11 +4,11 @@ import  Link  from "next/link";
 import { FaRegUser } from "react-icons/fa";
 export default function NaveBarre() {
   
-const token=localStorage.getItem('token')
+const token=null
  
   return (
     <div>
-  {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+  {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@ const token=localStorage.getItem('token')
 
 
 
-    {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+    {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ const token=localStorage.getItem('token')
                 <a className="nav-link active" aria-current="page" style={{color:"#7C8DB0"}} href="#">Hotels</a>
                 <a className="nav-link" href="#" style={{color:"#7C8DB0"}}>Packages</a>
                 <a className="nav-link" href="#"style={{color:"#7C8DB0"}}>chat</a>
-                <a className="nav-link" href="#"style={{color:"#7C8DB0"}}><FaRegUser  />
+                <a className="nav-link" href="/profile"style={{color:"#7C8DB0"}}><FaRegUser  />
 </a>
 
 
