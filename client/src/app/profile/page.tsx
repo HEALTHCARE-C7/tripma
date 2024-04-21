@@ -2,17 +2,22 @@
 import React,{useState} from 'react'
 import '../../CSS/profile.css'
 import '../../CSS/login.css'
-import Image from 'next/image'
+
 import { TbBrandGmail } from "react-icons/tb";
 import PhoneInput from 'react-phone-number-input'
-import { ToastContainer, toast } from 'react-toastify';
 import { FaCirclePlus } from "react-icons/fa6";
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+} from 'https://cdn.esm.sh/react-leaflet'
 
 export default function test() {
     const [value, setValue] = useState(0)
     const [country, setCountry] = useState(0)
     const handleClick = () => {
-      toast.success('This is a success message');
+      alert('Success!');
+    
     }
 
     return (
@@ -152,7 +157,7 @@ export default function test() {
                        className="form-input-country"
                         placeholder="Enter phone number"
                         value={value}
-                        onChange={setValue}/>
+                        onChange={setValue}/> 
             
                         </div>
                         <input
@@ -166,13 +171,13 @@ export default function test() {
                 <div className="container">
                     <div className="row">
                         <div  className="col-3">
-                       
+                     
                         <PhoneInput
                        
                      className="form-input-country"
                       placeholder  ="Enter phone number"
                       value={country}
-                     onChange={setCountry}/>
+                     onChange={setCountry}/> 
                 </div>
                         <input
                 className="form-input-number"
@@ -186,7 +191,7 @@ export default function test() {
         
            
           </form>
-          <button  onClick={handleClick } type="button"  className="button-save"  >Save</button>
+          <button  onClick={handleClick }  type="button"  className="button-save"  >Save</button>
         </div>
       </div>
      
