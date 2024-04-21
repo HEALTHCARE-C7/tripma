@@ -6,11 +6,11 @@ import '../../CSS/login.css'
 import { TbBrandGmail } from "react-icons/tb";
 import PhoneInput from 'react-phone-number-input'
 import { FaCirclePlus } from "react-icons/fa6";
-import {
-  MapContainer,
-  TileLayer,
-  useMap,
-} from 'https://cdn.esm.sh/react-leaflet'
+// import {
+//   MapContainer,
+//   TileLayer,
+//   useMap,
+// } from 'https://cdn.esm.sh/react-leaflet'
 
 export default function test() {
     const [value, setValue] = useState(0)
