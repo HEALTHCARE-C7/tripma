@@ -1,24 +1,23 @@
 'use client'
-import React,{useState} from 'react'
+import React,{useState,useCallback,useRef} from 'react'
 import '../../CSS/profile.css'
 import '../../CSS/login.css'
 
 import { TbBrandGmail } from "react-icons/tb";
 import PhoneInput from 'react-phone-number-input'
 import { FaCirclePlus } from "react-icons/fa6";
-// import {
-//   MapContainer,
-//   TileLayer,
-//   useMap,
-// } from 'https://cdn.esm.sh/react-leaflet'
-
+// import Map from "./page2"
 export default function test() {
     const [value, setValue] = useState(0)
     const [country, setCountry] = useState(0)
+
+
     const handleClick = () => {
       alert('Success!');
     
     }
+    
+   
 
     return (
 
@@ -48,7 +47,19 @@ export default function test() {
                         </div>
                     </div>
                 </div>
-                
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <iframe className='iframe' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6381.735480424553!2d10.18571026406821!3d36.89351216886016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb7254b0ee4f%3A0x7e87e33674451f9e!2sEl%20Ghazala!5e0!3m2!1sfr!2stn!4v1713772362053!5m2!1sfr!2stn" 
+             style ={{border:0, width:"600", height:"450"}} ></iframe>
+            </div>
+          </div>
+        </div>
+               
+           
+           
+     
+       
               
                 <div className="collapse navbar-collapse" style={{justifyContent:"end"}} id="navbarNavAltMarkup">
            
