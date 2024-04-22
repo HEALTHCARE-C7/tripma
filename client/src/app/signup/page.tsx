@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation'
 import {useAppDispatch,useAppSelector} from "../../store"
 import { useForm,Resolver  } from 'react-hook-form'
 import { Register ,} from '@/Action/authAction';
+import  Link  from "next/link";
+
 import '../../CSS/signup.css'
 import {User} from '../../types/Types';
 const resolver: Resolver<User> = async (values) => {
@@ -39,10 +41,6 @@ const RegisterForm: React.FC = () => {
   }
 
 
-  
-  const changeRole=()=>{
-    setView(!view)
-  }
 
 
   useEffect(()=>{

@@ -13,22 +13,31 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3001',
     methods: ['GET', 'POST'],
   },
 });
-
+const rooms = {};
 
 io.on('connection', (socket) => {
   console.log(`User connected ${socket.id}`);
+  socket.on("join", (room) => {
+    console.log("A user joined the room " + room);
+  
+    socket.join(room);
+    rooms[room] = rooms[room] || [];
+    rooms[room].push(socket.id);
+  
+
+   
+  });
 
 
-
-  socket.on('message', (message) => {
+  socket.on('send_message', (message) => {
       console.log('Received message:', message);
       
      
-      io.emit('message', message);
+      io.to(message.roomId).emit('message', message);
   });
 
 

@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../CSS/NaveBarre.css'; 
 import  Link  from "next/link";
 import { FaRegUser } from "react-icons/fa";
+import { useRouter } from 'next/navigation'
+
 export default function NaveBarre() {
+  const router=useRouter()
+    const [token, setToken] = useState<string | null>(null);
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      
+      setToken(token);
+    }, []);
   
-const token=localStorage.getItem('token')
+    const handleLogout = () => {
+      // event.preventDefault();
+      localStorage.removeItem('token');
+      // setToken(null);
+     router.push('/')
+    }
  
   return (
     <div>
@@ -45,7 +60,7 @@ const token=localStorage.getItem('token')
 </a>
 
 
-                <button className='btn-blue'> <a className="nav-link" style={{color:"white"}} href="#"  aria-disabled="true">Log out</a></button>
+                <button className='btn-blue'> <a className="nav-link" style={{color:"white"}} href="#"  aria-disabled="true" onClick={handleLogout}>Log out</a></button>
             </div>
             </div>
         </div>
