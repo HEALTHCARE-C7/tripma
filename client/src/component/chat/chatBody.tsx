@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState,useLayoutEffect
+import React, { useEffect, useState,useRef
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {U_ser,R__oom,R_oom,M_esages} from '../../types/Types';
@@ -16,34 +16,42 @@ interface ClientToServerEvents {
 interface PropsChatBar{
   rooms:R__oom,
   socket:any
- 
+  
 }
 
 const ChatBody = (props:PropsChatBar) => {
   const User=useAppSelector((state) => state.user.userInfo);
+  const chatContainerRef = useRef(null);
   
   // const navigate = useNavigate();
   const [messages, setMessages] = useState(props.rooms.rooms.messages);
 
-props.socket.on('connect', () => {
-  console.log('Connected to server');
-});
+
 
 
 
 
 useEffect(() => {
-if (!props.socket) return;
+  props.socket.on('connect', () => {
+    console.log('Connected to server');
+  });
+  props.socket.emit('join',props.rooms.rooms.id );
+if (!props.socket) console.log("not connected to sockete");
 
 
 props.socket.on('message', (data:M_esages) => {
-  setMessages((prevMessages) => [...prevMessages, data]);
   console.log('data is ready',data);
+  setMessages((prevMessages) => [...prevMessages, data]);
 });
 
 return () => props.socket.off('message');
 }, []);
-
+const scrollToBottom = () => {
+  if (chatContainerRef.current) {
+    // @ts-ignore
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  }
+};
   return (
     <div  className="chat__main">
       
@@ -54,9 +62,9 @@ return () => props.socket.off('message');
         </Link>
       </header>
         {/* <ChatFooter/> */}
-      <div className="message__container">
+      <div   className="message__container" >
         {messages.map((message) =>
-          <div className="message__chats" key={message.id}>
+          <div  ref={chatContainerRef} className="message__chats" key={message.id}>
             <h2>{message.users.firstName}</h2>
               <div className="message__recipient">
                 <p>{message.content}</p>
@@ -70,7 +78,7 @@ return () => props.socket.off('message');
           <p></p>
         </div>
       </div>
-        <ChatFooter roomId={props.rooms.rooms.id} socket={props.socket} />
+        <ChatFooter scrollToBottom={scrollToBottom}  roomId={props.rooms.rooms.id} socket={props.socket} />
     </div>
   );
 };

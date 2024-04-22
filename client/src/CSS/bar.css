@@ -1,6 +1,6 @@
 .chat__header {
     margin: 50px 0 20px 0;
-    color: white;
+    color: rgb(7, 5, 5);
     font-size: italic;
     white-space: pre;
   }
@@ -12,19 +12,19 @@
   
   }
   .chat__users button{
-    color: rgb(248, 246, 246);
+    color: rgb(12, 7, 7);
     font-style: italic;
   }
   .chat__sidebar {
     
     height: 100%;
-    background-color:  rgb(4, 4, 197);
+    background-color:  rgb(235, 235, 245);
    
     flex: 10;
     padding: 10px;
     border-right: 1px solid #fdfdfd;
   }
   .chat__sidebar h1{
-    color: rgb(248, 246, 246);
+    color: rgb(10, 8, 8);
     font-style: italic;
   }

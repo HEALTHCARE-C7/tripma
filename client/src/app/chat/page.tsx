@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState,useLayoutEffect
 } from 'react';
-import {U_ser,R__oom} from '../../types/Types';
+import {U_ser,R__oom,M_esages} from '../../types/Types';
 import {getRoomByUserId,createRoom} from '../../Action/user'
 
 import axios from 'axios';
@@ -23,9 +23,8 @@ interface ChatBarProps {
 const socket = io('http://localhost:4000');
 const ChatPage = () => {
   const rooms = useAppSelector((state) => state.user.room);
-console.log(rooms)
   const cUser=useAppSelector((state) => state.user.userInfo);
-  console.log("",cUser);
+
 
 
   const id= cUser?cUser.id:null;
@@ -39,7 +38,6 @@ console.log(rooms)
 const dispatch=useAppDispatch()
     
 useEffect(()=>{
-  console.log("idddddddddddddddd",id);
   
   id?dispatch(getRoomByUserId(id)):console.log("nothing to do")
 
@@ -51,7 +49,7 @@ useEffect(()=>{
   if(token) {
     dispatch(oneUser(token))
   }
-  
+
 },[])
 
 // useEffect(() => {
@@ -61,10 +59,6 @@ useEffect(()=>{
  }
  
 
-  socket.on('message', (data) => {
-   
-    console.log('data is ready',data);
-  });
 
 //   return () => socket.off('message');
 // }, []);

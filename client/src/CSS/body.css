@@ -5,10 +5,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: rgb(4, 4, 197);
+    background-color: rgb(230, 230, 240);
   }
   .chat__mainHeader h1{
-color: #fdfdfd;
+color: #070606;
 font-size: 40px;
 font-style: italic;
 
@@ -68,3 +68,6 @@ right: 400px;
     font-size: 13px;
     font-style: italic;
   }
+  /* .message__chats{
+    overflow-y: scroll; 
+  } */

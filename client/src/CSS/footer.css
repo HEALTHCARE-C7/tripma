@@ -15,7 +15,7 @@
   }
   .sendBtn {
     width: 150px;
-    background-color:#66eaf3;
+    background-color:rgb(2, 2, 116);
     padding: 10px;
     border: none;
     outline: none;
@@ -24,9 +24,9 @@
   }
   .chat__footer {
     padding: 10px;
-    background-color:  rgb(4, 4, 197);
+    background-color:  rgb(235, 235, 243);
     height: 10vh;
   }
   .sendBtn:hover {
-    background-color:rgb(37, 37, 163);
+    background-color:rgb(61, 61, 165);
   }
