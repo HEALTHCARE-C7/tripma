@@ -14,6 +14,7 @@ export default function NaveBarre() {
       setToken(token);
     }, []);
   
+
     const handleLogout = () => {
       // event.preventDefault();
       localStorage.removeItem('token');
@@ -23,7 +24,7 @@ export default function NaveBarre() {
  
   return (
     <div>
-  {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+  {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +45,7 @@ export default function NaveBarre() {
 
 
 
-    {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+    {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +57,7 @@ export default function NaveBarre() {
                 <a className="nav-link active" aria-current="page" style={{color:"#7C8DB0"}} href="#">Hotels</a>
                 <a className="nav-link" href="#" style={{color:"#7C8DB0"}}>Packages</a>
                 <a className="nav-link" href="#"style={{color:"#7C8DB0"}}>chat</a>
-                <a className="nav-link" href="#"style={{color:"#7C8DB0"}}><FaRegUser  />
+                <a className="nav-link" href="/profile"style={{color:"#7C8DB0"}}><FaRegUser  />
 </a>
 
 

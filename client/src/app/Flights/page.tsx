@@ -149,7 +149,7 @@ export default function page() {
 
 
 
-          <div className="row " style={{paddingTop:"1rem",border:"1px #acacac solid",width:"94%"}} >
+          <div className="row " style={{paddingTop:"1rem",width:"94%"}} >
             <div className="table-wrapper">
               <div className="table-scroll">
               <table className="table" >
