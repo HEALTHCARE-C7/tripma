@@ -71,14 +71,14 @@
     border: 1px solid #ccc;
     height: 100px;
   }
-  .navbare {
-    /* transition: background-color 0.3s ease; */
-    margin-left: 300px;
-  }
+ .navbareProfile {
+    transition: background-color 0.3s ease; 
+    margin-left: 300px; 
+   } 
   
   
   
-  .navbare a {
+  .navbareProfile a {
     display: inline-block;
     padding: 10px 20px;
     margin: 0 5px;

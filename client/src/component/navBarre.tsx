@@ -24,7 +24,7 @@ export default function NaveBarre() {
  
   return (
     <div>
-  {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+  {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ export default function NaveBarre() {
 
 
 
-    {!token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
+    {token &&    <nav className="navbar navbar-expand-lg navbar-light nav-barre-style ">
         <div className="container-fluid">
             <a className="navbar-brand brand-name" href="/"  >Tripma</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

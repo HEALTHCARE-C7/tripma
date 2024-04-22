@@ -2,6 +2,7 @@
 import React,{useState,useCallback,useRef} from 'react'
 import '../../CSS/profile.css'
 import '../../CSS/login.css'
+import  Link  from "next/link";
 
 import { TbBrandGmail } from "react-icons/tb";
 import PhoneInput from 'react-phone-number-input'
@@ -27,11 +28,12 @@ export default function test() {
         <div className='col-12 hello'><p>tripma.com</p></div>
           <div className='col-9 iheb'  ><p>hello , iheb!</p></div>
          
-          <nav className='navbare'>
-  <a href="#flight">Flight</a>
-  <a href="#hotels">Hotels</a>
-  <a href="#packages">Packages</a>
-  <a href="#chat">Chat</a>
+          <nav className='navbareProfile'>
+  
+  <a href="/Hotels">Hotels</a>
+  <Link href="/Booking" className="nav-link"  style={{color:"#7C8DB0"}} >Booking</Link>
+  <Link href="/login" className="nav-link"  style={{color:"#7C8DB0"}} >login</Link>
+  <Link href="/signup" className="nav-link"  style={{color:"#7C8DB0"}} >signup</Link>
 </nav>
 
         </div>
@@ -39,7 +41,6 @@ export default function test() {
                 <div className="container">
                     <div className="row">
                         <div style={{display:"flex", justifyContent:"center", marginTop:'100px'}} className="col-12">
-                       <img src="" alt="" />
                        <TbBrandGmail />
                        <br />
                             <h1 >ihabghdifi@gmail.com</h1>
@@ -47,12 +48,6 @@ export default function test() {
                         </div>
                     </div>
                 </div>
-      
-               
-           
-           
-     
-       
               
                 <div className="collapse navbar-collapse" style={{justifyContent:"end"}} id="navbarNavAltMarkup">
            

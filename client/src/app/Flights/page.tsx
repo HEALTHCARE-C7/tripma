@@ -177,7 +177,7 @@ export default function page() {
                     <td>  
                           <div>
                               <p>10seats </p>
-                              <p>{element.departure}</p>
+                              <p></p>
                           </div>
                     </td>
                     <td>    <div>
