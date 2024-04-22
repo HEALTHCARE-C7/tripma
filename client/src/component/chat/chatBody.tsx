@@ -26,7 +26,7 @@ const ChatBody = (props:PropsChatBar) => {
   // const navigate = useNavigate();
   const [messages, setMessages] = useState(props.rooms.rooms.messages);
 
-
+ 
 
 
 
