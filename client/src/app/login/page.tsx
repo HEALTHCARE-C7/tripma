@@ -12,7 +12,7 @@ import {useAppDispatch,useAppSelector} from "../../store"
 const LoginScreen = () => {
 
  const user=useAppSelector(state=>state.login.userInfo)
- console.log(user);
+ console.log('hello',user);
  
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch()
@@ -22,6 +22,8 @@ const LoginScreen = () => {
   const success= useAppSelector(state=>
     state.login.success
   )
+
+  
   console.log('succes',success);
   
   
@@ -29,7 +31,7 @@ const LoginScreen = () => {
     dispatch(Login(data)) 
     console.log("succc",success); 
     console.log(register);
-
+   
 }
 useEffect(()=>{
   if(success){
@@ -40,6 +42,7 @@ const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
     return (
+   
      
    <div className="container">
         <div className="modal-content padding-class">

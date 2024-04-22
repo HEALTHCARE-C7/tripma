@@ -16,8 +16,8 @@ model User {
   location String
   phoneNumber Int
    role Role?
-
-
+   messages   Message[] 
+   join JoinChat[] 
 }
 
 enum Role {
@@ -29,6 +29,28 @@ enum Role {
 enum Gender {
   male
   female
+}
+model Message {
+  id          Int       @id @default(autoincrement()) 
+  content     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  users        User      @relation(fields: [userId], references: [id])
+  userId      Int
+  room        Room      @relation(fields: [roomId], references: [id]) // This establishes a many-to-one relationship with Room
+  roomId      Int
+}
+model Room {
+  id        Int       @id @default(autoincrement())
+  messages  Message[]  
+  join JoinChat[]  
+} 
+model JoinChat {
+   id          Int       @id @default(autoincrement()) 
+  users    User  @relation(fields: [userId], references: [id])
+  userId  Int 
+  rooms    Room  @relation(fields: [roomId], references: [id])
+  roomId  Int
 }
 
 model voyage {

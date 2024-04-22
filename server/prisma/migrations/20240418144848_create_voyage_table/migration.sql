@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `voyage` MODIFY `seats` INTEGER NOT NULL DEFAULT 200;

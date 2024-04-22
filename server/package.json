@@ -12,7 +12,7 @@
   },
   "scripts": {
     "server-dev": "nodemon index.js",
-    "live": "nodemon index.js"
+     "live": "nodemon socket.js"
   },
   "devDependencies": {
     "prisma": "^5.12.1"
